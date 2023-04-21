@@ -8,7 +8,7 @@ const NavBarComponent = () => {
   return (
     <div>
         <div>
-          NavDiv
+          Navbar
          <LoginPage/>
       </div>
     </div>
