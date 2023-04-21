@@ -1,0 +1,9 @@
+.FullPage{
+    background-color: rgb(169, 248, 248);
+    min-height: 90vh;
+    border-radius: 0.2em;
+    padding-top: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    text-align: center;
+}
