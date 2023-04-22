@@ -5,7 +5,6 @@ import HomePage from "../Components/HomePage";
 import LoginPage from "../Components/LoginPage";
 import { useRouter } from "next/router";
 import { useAddress } from "@thirdweb-dev/react";
-import AxomeeHome from "./Axomee";
 import MINTPage from "../Components/nftMint";
 import S from "../ComponentCSS/PageCSS.module.css"
 import Whitepaper from "../Components/Whitepaper";

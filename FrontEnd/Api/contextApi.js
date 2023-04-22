@@ -8,7 +8,7 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 import {
     connectToDrop , 
     //connectToNFTMarket , 
-    //connectToToken , 
+    connectToToken , 
     //connectToTokenStaker , 
     //connectTo721NFTStaker ,
     //CheckIfWalletConnected,
@@ -20,6 +20,7 @@ export const AppContext = React.createContext();
 export const AppProvider = ({children}) =>{
     const [connectedUser , setConnectedUser] = useState("");
     const [ethBalance , setEthBalance] = useState("");
+    const [BuffTokenBalance , setBuffTokenBalance] = useState("");
     const [loading , setLoading] = useState(false);
 
     const fetchUser = async()=>{
@@ -27,6 +28,12 @@ export const AppProvider = ({children}) =>{
             if(!window.ethereum) alert("INSTALL METAMASK OR WEB3-Wallet First");
             const accounts = await connectWallet();
             setConnectedUser(accounts);
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const etherBalance = await provider.getBalance(accounts[0]);
+            setEthBalance(ethers.utils.formatEther(etherBalance));
+            const conn = await connectToToken();
+            const b = conn.balanceOf(connectedUser);
+            setBuffTokenBalance(ethers.utils.formatEther(b));
         } catch (error) {
             console.log(error);
         }
@@ -48,8 +55,8 @@ export const AppProvider = ({children}) =>{
     }
 
     return (
-        <ThirdwebProvider activeChain= "arbitrum-goerli">
-        <AppContext.Provider value={{connectedUser , ethBalance ,loading, MintNFT}}>
+        <ThirdwebProvider activeChain= "arbitrum">
+        <AppContext.Provider value={{connectedUser , ethBalance ,loading, MintNFT , BuffTokenBalance}}>
             {children}
         </AppContext.Provider>
         </ThirdwebProvider>

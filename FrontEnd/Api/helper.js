@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 
 //Imports of Abis
-//import TokenJson from "./abis/Token.json";
+import TokenJson from "./abis/Token.json";
 //import MarketJson from "./abis/nftMarket.json";
 import DropJson from "./abis/drop.json";
 //import TokenStakeJson from "./abis/StakeERC20.json";
@@ -14,7 +14,7 @@ const {TKN_ADDR , DROP_ADDR , M_ADDR , ERCSTAKE_ADDR ,N_ST_ADR } = process.env
 
 //Constants- ABIs
 
-//const TokenABI = TokenJson.abi;
+const TokenABI = TokenJson.abi;
 //const NFTStakeABI = NftStakeJson.abi;
 const NFTDropABI = DropJson.abi;
 //const NFTMarketABI = MarketJson.abi;
@@ -62,7 +62,7 @@ export const connectToDrop = async()=>{
         console.log(error);
     }
 }  
-/*{// Connect Token Contract
+// Connect Token Contract
 export const connectToToken = async()=>{
     const fetchContract = (signerOrProvider)=>
   new ethers.Contract(TKN_ADDR, TokenABI , signerOrProvider);
@@ -78,7 +78,7 @@ export const connectToToken = async()=>{
     }
 }
 //Connect To NFT MarketPlace
-export const connectToNFTMarket = async()=>{
+/*{export const connectToNFTMarket = async()=>{
     const fetchContract = (signerOrProvider)=>
   new ethers.Contract(M_ADDR , NFTMarketABI , signerOrProvider);
     try {
