@@ -45,18 +45,18 @@ const HomePage = () => {
             <div>
               <h4>BUFF TOKEN :</h4>
               <p>
-              BUFF TOKEN is an ERC20 Token that is the Main Currency Within the Ecosystem.It is a Taxed token that has 10% tax on each transaction, the Taxes are Split into Three categories they are : 
+              BUFF TOKEN is an ERC20 Token with Total Supply of 10 bn Tokens ,that is the Main Currency Within the Ecosystem.It is a Taxed token that has 10% tax on each transaction, the Taxes are Split into Three categories they are : 
               </p>
               <p>
               A: BURN FEE =  WE Vow to BUFF Up the Burning Mechanism for the token Unlike other MEMECOINS. Initially 5% of each Transaction will be Automatically Burned out of the Supply.
               </p>
               <p>
-                B: ECOSYSTEM AND OWNER FEE : 3% of each transaction will be reserved for the ECOSYSTEM TO HAVE ACCESS TO. 1% Fee is Further Split in two in the Ratio of 8:2 for Ecosystem and Owner Respectively.
-                Ecosystem fee is to be used for Marketing Purposes, Management Purposes as well as other Costs (SUBJECTED TO BUY-BACKS). The Rest 2% is added as Liquidity to BUFF REWARD Token.
+                B: ECOSYSTEM AND OWNER FEE : 1% of each transaction will be reserved for the ECOSYSTEM TO HAVE ACCESS TO. 1% Fee is Further Split in two in the Ratio of 8:2 for Ecosystem and Owner Respectively.
+                Ecosystem fee is to be used for Marketing Purposes, Management Purposes as well as other Costs (SUBJECTED TO BUY-BACKS).
               </p>
               <p>
                 REWARDS AND DONATIONS PROTOCOL : 2% of Transactions are reserved to Support the UserReward Programs, Staking , Farming and Supporting the Donations for Conservation Programmes as well as Other Humane Donations.
-                This Fee is Further Split into 1:1 ratio for Rewards and Donations Respectively
+                This Fee is Further Split into 1:1 ratio for Rewards and Donations Respectively. The Rest 2% is added as Liquidity to BUFF REWARD Token Amounting a total of 4%
               </p>
             </div>
               <div>

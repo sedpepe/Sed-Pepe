@@ -8,6 +8,7 @@ import { useAddress } from "@thirdweb-dev/react";
 import AxomeeHome from "./Axomee";
 import MINTPage from "../Components/nftMint";
 import S from "../ComponentCSS/PageCSS.module.css"
+import Whitepaper from "../Components/Whitepaper";
 
 export default function Home() {
   const {connectedUser} =useContext(AppContext);
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <div> 
            <HomePage/>
+           <Whitepaper/>
         </div>
       </main>
     </div>

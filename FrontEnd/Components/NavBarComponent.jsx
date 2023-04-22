@@ -8,7 +8,6 @@ const NavBarComponent = () => {
   return (
     <div>
         <div>
-          Navbar
          <LoginPage/>
       </div>
     </div>
