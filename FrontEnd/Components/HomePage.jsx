@@ -48,11 +48,11 @@ const HomePage = () => {
               BUFF TOKEN is an ERC20 Token that is the Main Currency Within the Ecosystem.It is a Taxed token that has 10% tax on each transaction, the Taxes are Split into Three categories they are : 
               </p>
               <p>
-              A: BURN FEE =  WE Vow to BUFF Up the Burning Mechanism for the token Unlike other MEMECOINS. Initially 7% of each Transaction will be Automatically Burned out of the Supply.
+              A: BURN FEE =  WE Vow to BUFF Up the Burning Mechanism for the token Unlike other MEMECOINS. Initially 5% of each Transaction will be Automatically Burned out of the Supply.
               </p>
               <p>
-                B: ECOSYSTEM AND OWNER FEE : 1% of each transaction will be reserved for the ECOSYSTEM TO HAVE ACCESS TO. This Fee is Further Split in two in the Ratio of 8:2 for Ecosystem and Owner Respectively.
-                Ecosystem fee is to be used for Marketing Purposes, Management Purposes as well as other Costs.
+                B: ECOSYSTEM AND OWNER FEE : 3% of each transaction will be reserved for the ECOSYSTEM TO HAVE ACCESS TO. 1% Fee is Further Split in two in the Ratio of 8:2 for Ecosystem and Owner Respectively.
+                Ecosystem fee is to be used for Marketing Purposes, Management Purposes as well as other Costs (SUBJECTED TO BUY-BACKS). The Rest 2% is added as Liquidity to BUFF REWARD Token.
               </p>
               <p>
                 REWARDS AND DONATIONS PROTOCOL : 2% of Transactions are reserved to Support the UserReward Programs, Staking , Farming and Supporting the Donations for Conservation Programmes as well as Other Humane Donations.
@@ -78,6 +78,18 @@ const HomePage = () => {
               ERC20 Staking Program with a Dual Token Structure that Rewards BUFF Token Stakers with a Reward Token called "BUFF REWARDS" as well as Special Utilities such as AccessLists and Whitelists.
               </p>
               </div>
+              <div>
+              <h4>BUFF REWARDS:</h4>
+              <p> 
+                Buff Rewards is the Secondary Token of BUFF RHINO that is Used to Reward Staking Activities for BUFF Tokens. This Token will only have BUFF TOKENS for Liquidity Pair.
+              </p>
+              </div>
+              {/*<div>
+              <h4>BUFFs</h4>
+              <p> 
+                BUFFs are a Special Collection of Time-Based NFTs that will act as Booster Packs for Getting Higher APY for NFT Staking. Implemented Later with Staking 2.0 (Staking 2.0  is the Planned Overhaul for the Ecosystem Staking Sytem after we Reach 10m Market Cap Milestone)
+              </p>
+            </div>*/}
           </div>
         </div>  
     </div>
