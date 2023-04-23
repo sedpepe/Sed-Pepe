@@ -16,7 +16,6 @@ export default function Home() {
       <main>
         <div> 
            <HomePage/>
-           <Whitepaper/>
         </div>
       </main>
     </div>
