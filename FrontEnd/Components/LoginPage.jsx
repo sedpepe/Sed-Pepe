@@ -5,12 +5,11 @@ import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { AppContext } from '../Api/contextApi'
 const LoginPage = () => {
-  const {connectedUser , ethBalance ,BuffTokenBalance } =useContext(AppContext);
+  const {connectedUser,BuffTokenBalance } =useContext(AppContext);
   const route = useRouter();
   const Connector = async()=>{
         try {
             const connect =await connectWallet();
-            connect.wait();
         } catch (error) {
             console.log(error);
         }

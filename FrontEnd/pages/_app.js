@@ -1,4 +1,5 @@
 import { ThirdwebProvider } from "@thirdweb-dev/react";
+import { ArbitrumGoerli } from "@thirdweb-dev/chains";
 import "../styles/globals.css";
 import { AppProvider } from "../Api/contextApi";
 import NavBarComponent from "../Components/NavBarComponent";
@@ -12,11 +13,13 @@ const activeChain = "ethereum";
 
 function MyApp({ Component, pageProps }) {
   return (
+    <ThirdwebProvider activeChain= {ArbitrumGoerli}>
     <AppProvider>
     <Header/>
       <NavBarComponent/>
       <Component {...pageProps} />
     </AppProvider>
+    </ThirdwebProvider>
   );
 }
 
