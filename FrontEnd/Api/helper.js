@@ -10,8 +10,8 @@ import DropJson from "./abis/drop.json";
 //import NftStakeJson from "./abis/NftStake.json";
 //Constansts - Addresses
 
-const {TKN_ADDR , DROP_ADDR , M_ADDR , ERCSTAKE_ADDR ,N_ST_ADR } = process.env
-
+const {DROP_ADDR , M_ADDR , ERCSTAKE_ADDR ,N_ST_ADR } = process.env;
+const TKN_ADDR = "0x814C2ca43F16342d8D4e6405Ee967d1cb2C2C54d";
 //Constants- ABIs
 
 const TokenABI = TokenJson.abi;
