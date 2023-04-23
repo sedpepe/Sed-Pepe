@@ -10,7 +10,7 @@ import S from "../ComponentCSS/PageCSS.module.css"
 import Whitepaper from "../Components/Whitepaper";
 
 export default function Home() {
-  const {connectedUser} =useContext(AppContext);
+  const {connectedUser , fetchBalances} =useContext(AppContext);
   return (
     <div>
       <main>

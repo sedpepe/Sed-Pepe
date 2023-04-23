@@ -19,7 +19,7 @@ export const AppProvider = ({children}) =>{
     const [correctNetwork, setCorrectNetwork] = useState(false);
     const [networkError, setNetworkError] = useState(false);
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-    const [BuffTokenBalance , setBuffTokenBalance] = useState();
+    const [BuffTokenBalance , setBuffTokenBalance] = useState("");
     const [loading , setLoading] = useState(false);
 
     const fetchUser = async()=>{
@@ -42,22 +42,32 @@ export const AppProvider = ({children}) =>{
               setNetworkError(false);
             }
             const accounts = await connectWallet();
+            setLoading(true);
             setConnectedUser(accounts);
             setIsUserLoggedIn(true);
-            const BuffTokenContract = await connectToToken();
-           // console.log(BuffTokenContract);
-            if (connectedUser) {
-              const buffB = BuffTokenContract.balanceOf(connectedUser);
-              const B = ethers.utils.formatEther(buffB);
-              console.log(B);
-              setBuffTokenBalance(B);
-            }
+            setLoading(false);
           } catch (error) {
             console.log(error);
           }
     }
 
-    useEffect(()=>{fetchUser();},[]);
+    const fetchBalances = async()=>{
+      try {
+        const BuffTokenContract = await connectToToken();
+            if (connectedUser) {
+              const buffB =await BuffTokenContract.balanceOf(connectedUser);
+              const B = ethers.utils.formatEther(buffB);
+              setBuffTokenBalance(B);
+              return B;
+            }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    useEffect(()=>{
+      fetchUser();
+    },[]);
 
     const MintNFT = async({user, id,amount, _currency, _pricePerToken, _allowlistProof, _data })=>{
         try {
@@ -73,7 +83,7 @@ export const AppProvider = ({children}) =>{
     }
 
     return (
-        <AppContext.Provider value={{connectedUser ,loading,networkError,isUserLoggedIn, correctNetwork ,MintNFT , BuffTokenBalance}}>
+        <AppContext.Provider value={{connectedUser ,loading,networkError,isUserLoggedIn, correctNetwork ,MintNFT , BuffTokenBalance, fetchBalances}}>
             {children}
         </AppContext.Provider>
     )
