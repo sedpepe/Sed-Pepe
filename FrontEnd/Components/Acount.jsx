@@ -1,7 +1,18 @@
+import { ethers } from 'ethers';
 import React, { useState } from 'react'
 
 const Acount = ({connectedUser , BuffTokenBalance , CollectionName,TokenSymbol,transferBuffToken}) => {
   const [addressInput , setInputA] = useState("");
+  const [amtInput , setInputAmt] = useState("");
+
+  const traHandler =async()=>{
+    try {
+      const val = ethers.utils.parseEther(amtInput);
+      await transferBuffToken(addressInput , amtInput);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div>
       <h3>Address : {connectedUser}</h3>
@@ -10,7 +21,8 @@ const Acount = ({connectedUser , BuffTokenBalance , CollectionName,TokenSymbol,t
       <div>
         <h1>Transfer</h1>
         <input type="text" onChange={(e)=> setInputA(e.target.value)}/>
-        <button onClick={()=>transferBuffToken(addressInput , 1000)}>Send</button>
+        <input type="number" onChange={(e)=> setInputAmt(e.target.value)}/>
+        <button onClick={()=>traHandler()}>Send</button>
       </div>
     </div>
   )
