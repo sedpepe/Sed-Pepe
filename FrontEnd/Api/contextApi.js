@@ -17,7 +17,6 @@ export const AppContext = React.createContext();
 
 export const AppProvider = ({children}) =>{
     const [connectedUser , setConnectedUser] = useState("");
-    const [correctNetwork, setCorrectNetwork] = useState(false);
     const [networkError, setNetworkError] = useState(false);
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [BuffTokenBalance , setBuffTokenBalance] = useState("");
@@ -28,6 +27,8 @@ export const AppProvider = ({children}) =>{
     const [loading , setLoading] = useState(false);
     const [TokenName , setTokenName] = useState("");
     const [TokenSymbol , setTokenSymbol] = useState("");
+    const [TokenTotalSupply , setTokenTotalSupply] = useState("");
+    const [TokenRemainingSupply , setTokenRemainingSupply] = useState("");
 
     const fetchUser = async()=>{
         try {
@@ -40,12 +41,10 @@ export const AppProvider = ({children}) =>{
             console.log("Connected to " + chainId);
             const arbChainId = "0x66eed";
             if (chainId !== arbChainId) {
-              console.log("Please connect to Arbitrum Test Network");
-              setCorrectNetwork(false);
+              alert("Please connect to Arbitrum Test Network");
+              ChangeNetworktoArb();
               setNetworkError(true);
-              return;
             } else {
-              setCorrectNetwork(true);
               setNetworkError(false);
             }
             const accounts = await connectWallet();
@@ -81,6 +80,10 @@ export const AppProvider = ({children}) =>{
               setTokenSymbol(buffB);
               const BuffName = await BuffTokenContract.name();
               setTokenName(BuffName);
+              const buffTsupp = await BuffTokenContract.totalSupply();
+              setTokenTotalSupply(buffTsupp);
+              const a = await BuffTokenContract.totalUnburntSupply();
+              setTokenRemainingSupply(a);
               setLoading(false);
               return buffB;
             }
@@ -186,15 +189,16 @@ export const AppProvider = ({children}) =>{
         console.log("Transaction successful! Transaction hash:", result.transactionHash);
         return result;
         });
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
     }
   }
     return (
-        <AppContext.Provider value={{connectedUser ,loading,networkError,isUserLoggedIn, correctNetwork ,MintNFT , BuffTokenBalance, fetchBalances
-        , approveBuffToken , transferBuffToken ,burnBuffToken , getNFTCollectionName, CollectionName , TokenSymbol , fetchTokenDetails,getNFTCollectionBalance,
-        CollectionBalance , CollectionURI , CollectionSymbol , TokenName , NFTSafeTransfer
+        <AppContext.Provider value={{connectedUser ,loading,networkError,isUserLoggedIn , BuffTokenBalance //states
+        ,CollectionBalance , CollectionURI , CollectionSymbol , TokenName ,CollectionName , TokenSymbol , TokenTotalSupply,TokenRemainingSupply,
+        approveBuffToken , transferBuffToken ,burnBuffToken , getNFTCollectionName, fetchTokenDetails, NFTSafeTransfer,getNFTCollectionBalance,MintNFT, fetchBalances //functions
         }}>
             {children}
         </AppContext.Provider>
