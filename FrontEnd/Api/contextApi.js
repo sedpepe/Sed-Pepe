@@ -21,7 +21,11 @@ export const AppProvider = ({children}) =>{
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [BuffTokenBalance , setBuffTokenBalance] = useState("");
     const [CollectionName , setCollectionName] = useState("");
+    const [CollectionSymbol , setCollectionSymbol] = useState("");
+    const [CollectionURI , setCollectionURI] = useState("");
+    const [CollectionBalance , setCollectionBalance] = useState("");
     const [loading , setLoading] = useState(false);
+    const [TokenName , setTokenName] = useState("");
     const [TokenSymbol , setTokenSymbol] = useState("");
 
     const fetchUser = async()=>{
@@ -72,7 +76,11 @@ export const AppProvider = ({children}) =>{
         const BuffTokenContract = await connectToToken();
             if (connectedUser) {
               const buffB =await BuffTokenContract.symbol();
+              setLoading(true);
               setTokenSymbol(buffB);
+              const BuffName = await BuffTokenContract.name();
+              setTokenName(BuffName);
+              setLoading(false);
               return buffB;
             }
       } catch (error) {
@@ -121,7 +129,10 @@ export const AppProvider = ({children}) =>{
 
     useEffect(()=>{
       fetchUser();
+      fetchBalances();
       fetchTokenDetails();
+      getNFTCollectionBalance();
+      getNFTCollectionName();
     },[]);
 
     const MintNFT = async({user, id,amount, _currency, _pricePerToken, _allowlistProof, _data })=>{
@@ -138,18 +149,36 @@ export const AppProvider = ({children}) =>{
     const getNFTCollectionName = async()=>{
       try {
           const connect = await connectToDrop();
-          const call =await connect.name();
           setLoading(true);
+          const call =await connect.name();
           setCollectionName(call);
+          const call2 = await connect.uri(0);
+          setCollectionURI(call2);
+          const call3 = await connect.symbol();
+          setCollectionSymbol(call3);
           setLoading(false);
       } catch (error) {
           console.log(error);
       }
   }
+  const getNFTCollectionBalance = async()=>{
+    try {
+        const connect = await connectToDrop();
+        if(connectedUser){
+          const call =await connect.balanceOf(connectedUser , 0);
+          setLoading(true);
+          setCollectionBalance(call);
+        }
+        setLoading(false);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
     return (
         <AppContext.Provider value={{connectedUser ,loading,networkError,isUserLoggedIn, correctNetwork ,MintNFT , BuffTokenBalance, fetchBalances
-        , approveBuffToken , transferBuffToken ,burnBuffToken , getNFTCollectionName, CollectionName , TokenSymbol , fetchTokenDetails
+        , approveBuffToken , transferBuffToken ,burnBuffToken , getNFTCollectionName, CollectionName , TokenSymbol , fetchTokenDetails,getNFTCollectionBalance,
+        CollectionBalance , CollectionURI , CollectionSymbol , TokenName
         }}>
             {children}
         </AppContext.Provider>

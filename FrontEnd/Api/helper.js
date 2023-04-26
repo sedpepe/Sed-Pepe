@@ -21,6 +21,19 @@ const NFTDropABI = DropJson.abi;
 //const NFTMarketABI = MarketJson.abi;
 //const ERC20StakingABI = TokenStakeJson.abi;
 
+const arbnetwork = [
+    {
+        chainId:"0xa4b1",
+        chainName:"Arbitrum",
+        rpcUrls:["https://arb1.arbitrum.io/rpc"],
+        nativeCurrency:{
+         name: "Arbitrum Ether",
+         symbol:"A-Eth",
+         decimals: 18,   
+        },
+    }
+]
+
 
 export const CheckIfWalletConnected = async()=> {
      try {
@@ -74,6 +87,17 @@ export const connectToToken = async()=>{
         const signer = provider.getSigner();
         const contract = fetchContract(signer);
         return contract;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const ChangeNetworktoArb = async()=>{
+    try {
+        await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: arbnetwork,
+        });
     } catch (error) {
         console.log(error);
     }
