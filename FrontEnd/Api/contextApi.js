@@ -9,7 +9,8 @@ import {
     //connectToTokenStaker , 
     //connectTo721NFTStaker ,
     //CheckIfWalletConnected,
-    connectWallet} 
+    connectWallet,
+    ChangeNetworktoArb} 
 from "./helper";
 
 export const AppContext = React.createContext();
@@ -168,17 +169,32 @@ export const AppProvider = ({children}) =>{
           const call =await connect.balanceOf(connectedUser , 0);
           setLoading(true);
           setCollectionBalance(call);
+          setLoading(false);
         }
-        setLoading(false);
     } catch (error) {
         console.log(error);
     }
-}
+  }
 
+  const NFTSafeTransfer=async({to, amount})=>{
+    try {
+      const connect = await connectToDrop();
+      if(connectedUser){
+        const t = await connect.safeTransferFrom(connectedUser,to,0,amount ,"");
+        setLoading(true);
+        t.then((result) => {
+        console.log("Transaction successful! Transaction hash:", result.transactionHash);
+        return result;
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
     return (
         <AppContext.Provider value={{connectedUser ,loading,networkError,isUserLoggedIn, correctNetwork ,MintNFT , BuffTokenBalance, fetchBalances
         , approveBuffToken , transferBuffToken ,burnBuffToken , getNFTCollectionName, CollectionName , TokenSymbol , fetchTokenDetails,getNFTCollectionBalance,
-        CollectionBalance , CollectionURI , CollectionSymbol , TokenName
+        CollectionBalance , CollectionURI , CollectionSymbol , TokenName , NFTSafeTransfer
         }}>
             {children}
         </AppContext.Provider>
