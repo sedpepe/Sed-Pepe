@@ -42,7 +42,10 @@
         padding-left:0.55rem;
         padding-right:0.5rem;
     }
-    .navR{
+    .navmenu{
         gap:0.5rem;
+    }
+    .navR{
+        gap:0.88rem;
     }
 }

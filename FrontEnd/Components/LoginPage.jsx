@@ -20,7 +20,7 @@ const LoginPage = () => {
     
   return (
     <div>
-        {!connectedUser ? <button onClick={()=> Connector()}>CONNECT</button>:<div> <Link href={'./profile'}><button>{connectedUser.slice(0,4)}...{connectedUser.slice(34)} </button></Link></div>}
+        {!connectedUser ? <button onClick={()=> Connector()}>CONNECT</button>:<div> <Link href={'./profile'}><button>{connectedUser.slice(0,4)}...{connectedUser.slice(38)} </button></Link></div>}
     </div>
   )
 }
