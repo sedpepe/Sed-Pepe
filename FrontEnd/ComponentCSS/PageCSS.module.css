@@ -42,6 +42,7 @@
         padding-left:0.55rem;
         padding-right:0.5rem;
         gap:1rem;
+        min-width: 35em;
     }
     .navmenu{
         gap:0.5rem;
