@@ -20,19 +20,7 @@ const TokenABI = TokenJson.abi;
 const NFTDropABI = DropJson.abi;
 //const NFTMarketABI = MarketJson.abi;
 //const ERC20StakingABI = TokenStakeJson.abi;
-
-const arbnetwork = [
-    {
-        chainId:"0xa4b1",
-        chainName:"Arbitrum",
-        rpcUrls:["https://arb1.arbitrum.io/rpc"],
-        nativeCurrency:{
-         name: "Arbitrum Ether",
-         symbol:"A-Eth",
-         decimals: 18,   
-        },
-    }
-]
+import { arbnetwork , arbTestNetwork} from "./networks";
 
 
 export const CheckIfWalletConnected = async()=> {
@@ -93,6 +81,56 @@ export const connectToToken = async()=>{
 }
 
 export const ChangeNetworktoArb = async()=>{
+    try {
+        await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: arbnetwork,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const ChangeNetworktoArbTest = async()=>{
+    try {
+        await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: arbTestNetwork,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const ChangeNetworktoLinea = async()=>{
+    try {
+        await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: arbnetwork,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const ChangeNetworktoLineaTest = async()=>{
+    try {
+        await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: arbnetwork,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const ChangeNetworktoBase = async()=>{
+    try {
+        await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: arbnetwork,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const ChangeNetworktoBaseTest = async()=>{
     try {
         await window.ethereum.request({
             method: "wallet_addEthereumChain",
