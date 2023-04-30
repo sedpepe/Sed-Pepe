@@ -43,9 +43,9 @@ export const AppProvider = ({children}) =>{
             if (chainId !== arbTestChainId) {
               alert("Please connect to Arbitrum Test Network");
               ChangeNetworktoArbTest();
-              setNetworkError(true);
-            } else {
               setNetworkError(false);
+            } else {
+              setNetworkError(true);
             }
             const accounts = await connectWallet();
             setLoading(true);
