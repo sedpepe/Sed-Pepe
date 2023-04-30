@@ -22,6 +22,11 @@
 .logo{
     border-radius: 1.8rem;
 }
+.navR{
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem;
+}
 .navProfile{
 
 }
@@ -31,4 +36,13 @@
     justify-content: space-between;
     align-items: center;
     color: black;
+}
+@media only screen and (max-width: 55em){
+    .navbar{
+        padding-left:0.55rem;
+        padding-right:0.5rem;
+    }
+    .navR{
+        gap:0.5rem;
+    }
 }

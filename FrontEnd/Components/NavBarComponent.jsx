@@ -1083,6 +1083,8 @@ const NavBarComponent = () => {
       </g>
       </svg>
         </div>
+
+        <div className={S.navR}>
       <div className={S.navmenu}>
       <Link href ={'./'}><div>Home</div></Link>
         <Link href ={'./litepaper'}><div>Litepaper</div></Link>
@@ -1090,6 +1092,7 @@ const NavBarComponent = () => {
       </div>
       <div>
          <LoginPage/>
+      </div>
       </div>
     </div>
   )
