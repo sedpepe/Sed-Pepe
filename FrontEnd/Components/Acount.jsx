@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 import React, { useState } from 'react'
+import S from "../ComponentCSS/PageCSS.module.css"
 
 const Acount = ({connectedUser , BuffTokenBalance , CollectionName,TokenSymbol,transferBuffToken}) => {
   const [addressInput , setInputA] = useState("");
@@ -14,7 +15,7 @@ const Acount = ({connectedUser , BuffTokenBalance , CollectionName,TokenSymbol,t
     }
   }
   return (
-    <div>
+    <div className={S.FullPage}>
       <h3>Address : {connectedUser}</h3>
       <h5>{TokenSymbol} Balance : {BuffTokenBalance}</h5>
       <h4>NFT COLLECTION NAME : {CollectionName}</h4>

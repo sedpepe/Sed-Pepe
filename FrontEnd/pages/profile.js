@@ -44,8 +44,8 @@ const Profile = () => {
         TokenSymbol = {TokenSymbol}
         transferBuffToken = {transferBuffToken}
         />
-        <input type="number" onChange={(e)=> setInputAmt(e.target.value)}/>
-        <button onClick={()=> burnBuff()}>Burn</button>
+        {/*<input type="number" onChange={(e)=> setInputAmt(e.target.value)}/>
+        <button onClick={()=> burnBuff()}>Burn</button>*/}
     </div>
   )
 }

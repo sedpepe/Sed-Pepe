@@ -18,13 +18,13 @@ const Whitepaper = () => {
       </p>
       <div>
       <h2>1: BUFF TOKEN (BUFF) =</h2>
-      <p>BUFF TOKEN is a Hyperdeflationary ERC20 Token that has a 10% on every transaction and a Total Supply of 10bn Tokens.
+      <p>BUFF TOKEN is a Hyperdeflationary ERC20 Token that has a 3% on every transaction and a Total Supply of 10bn Tokens.
         It is a Taxable erc-20 token with a Hyper-Deflationary Token Model and will serve as the Primary/Main Token to be used withing the 
         Ecosystem.</p>
-        <h6>The Token has 3 Taxes on Each Transaction that amounts to a Total 10% Tax, They Are:</h6> 
-        <p>1: Ecosytem Tax : 4% of Each Transaction is reserved for the Ecosystem.</p>
-        <p>2: BUFF-R Liquidity Tax : 2% of Each Transaction is used to buy-back and add Liquidity to BUFF-R Liquidity Pair. 100% of BUFF-R tokens that are bought back will be burned.</p>
-        <p>3: Burn Tax : 4% of Each Transaction is Burned out of the Supply forever.</p>
+        <h6>The Token has 3 Taxes on Each Transaction that amounts to a Total 3% Tax, They Are:</h6> 
+        <p>1: Ecosytem Tax : 0.5% of Each Transaction is reserved for the Ecosystem.</p>
+        <p>2: BUFF-R Liquidity Tax : 1% of Each Transaction is used to buy-back and add Liquidity to BUFF-R Liquidity Pair. 100% of BUFF-R tokens that are bought back will be burned.</p>
+        <p>3: Burn Tax : 1.5% of Each Transaction is Burned out of the Supply forever.</p>
 
         <h6>Other Features :</h6>
         <p>1: Anti-Flash Dump System = Every Transaction will have a Limit of 2% of max supply. This is to Ensure Whale Manipulation is controlled to an Extent and Prevent Sudden dumps on the Community.</p>
