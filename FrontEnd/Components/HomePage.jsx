@@ -51,12 +51,12 @@ const HomePage = () => {
               A: BURN FEE =  WE Vow to BUFF Up the Burning Mechanism for the token Unlike other MEMECOINS. 1.5% of each Transaction will be Automatically Burned out of the Supply.
               </p>
               <p>
-                B: ECOSYSTEM AND OWNER FEE : 0.3% of each transaction will be reserved for the ECOSYSTEM TO HAVE ACCESS TO. 1% Fee is Further Split in two in the Ratio of 8:2 for Ecosystem and Owner Respectively.
+                B: ECOSYSTEM AND OWNER FEE : 0.3% of each transaction will be reserved for the ECOSYSTEM TO HAVE ACCESS TO. This Fee is Further Split in two in the Ratio of 8:2 for Ecosystem and Owner Respectively.
                 Ecosystem fee is to be used for Marketing Purposes, Management Purposes as well as other Costs (SUBJECTED TO BUY-BACKS).
               </p>
               <p>
                 REWARDS AND DONATIONS PROTOCOL : 0.2% of Transactions are reserved to Support the UserReward Programs, Staking , Farming and Supporting the Donations for Conservation Programmes as well as Other Humane Donations.
-                This Fee is Further Split into 1:1 ratio for Rewards and Donations Respectively. The Rest 1% is added as Liquidity to BUFF REWARD Token.
+                This Fee is Further Split into 1:1 ratio for Rewards Respectively. The Rest 1% is added as Liquidity to BUFF REWARD Token.
               </p>
             </div>
               <div>
