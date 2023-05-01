@@ -42,7 +42,6 @@
         padding-left:1.55rem;
         padding-right:0.5rem;
         gap:3.66rem;
-        min-width: 25em;
     }
     .navmenu{
         gap:0.5rem;
@@ -51,6 +50,5 @@
         gap:1rem;
     }
     .FullPage{
-        min-width: 25em;
     }
 }
