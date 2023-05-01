@@ -12,6 +12,7 @@ contract BUFFLocker {
     address private Owner;
     address private token;
     uint256 public LockerDuration;
+    uint256 private TotalAllowedwithdrawers;
     mapping (address => uint256) private balances;
     mapping (address => uint256) private withdrawnAmount;
     mapping (address => bool) private isAllowedDepositor;
@@ -20,10 +21,11 @@ contract BUFFLocker {
     event Locked(address indexed sender, uint256 amount ,uint256 timestamp);
     event Withdrawn(address indexed receiver , uint256 amount , uint256 timestamp);
 
-    constructor(uint256 timeUnitsInDays , address token_){
+    constructor(uint256 timeUnitsInDays , address token_ , uint256 withdrawers){
         LockerDuration = timeUnitsInDays.mul(1 days);
         Owner = msg.sender; 
         token = token_;
+        TotalAllowedwithdrawers = withdrawers;
     }
 
     function lock(uint256 amount) external returns(bool){
@@ -36,11 +38,12 @@ contract BUFFLocker {
     
     function unlockAndWithdraw()external returns(bool){
         require (isAllowedReciever[msg.sender] == true , "Only Allowed Addresses Can Withdraw"); 
+        uint256 maxRelease = balances[address(this)].div(TotalAllowedwithdrawers);
         uint256 elapsedTime = block.timestamp.sub(block.timestamp.mod(LockerDuration));
         uint256 releaseTime = elapsedTime.add(LockerDuration);
         require(block.timestamp >= releaseTime, "Tokens are still locked");
         uint256 numberOfReleases = elapsedTime.div(LockerDuration);
-        uint256 totalAmountPercentToRecieve = numberOfReleases.mul(10);
+        uint256 totalAmountPercentToRecieve = maxRelease.sub(numberOfReleases.mul(10));
         uint256 amountPercentToRecieve = totalAmountPercentToRecieve.sub(withdrawnAmount[msg.sender]);
         require(amountPercentToRecieve > 0, "No tokens to withdraw");
         IERC20(token).transferFrom(address(this), msg.sender,amountPercentToRecieve);
@@ -52,6 +55,10 @@ contract BUFFLocker {
     function setIsAllowedDepositor(address depositor, bool isAllowed) external {
         require(msg.sender == Owner, "Only the owner can set allowed depositors");
         isAllowedDepositor[depositor] = isAllowed;
+    }
+    function addWithdrawerCount(uint256 count) external {
+        require(msg.sender == Owner, "Only the owner can set allowed number of receivers"); 
+        TotalAllowedwithdrawers = count;
     }
 
     function setIsAllowedReciever(address receiver, bool isAllowed) external {
