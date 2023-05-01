@@ -3,6 +3,7 @@ import { ArbitrumGoerli } from "@thirdweb-dev/chains";
 import { AppProvider } from "../Api/contextApi";
 import NavBarComponent from "../Components/NavBarComponent";
 import Header from "../Components/Header";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
