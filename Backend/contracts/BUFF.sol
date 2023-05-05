@@ -1,4 +1,4 @@
-// SPDX-licence-identifier : MIT
+// SPDX-License-Identifier: MIT
 
 /* Author : BOBSEAL */
 
@@ -7,13 +7,13 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract BUFFToken is IERC20 , ReentrancyGuard {
+contract BUFF_RHINO_TOKEN is IERC20 , ReentrancyGuard {
       // TYPES DEFINITIONS
     using SafeMath for uint256;
 
     // state variables
-    string public name;
-    string public symbol;
+    string public constant name = "BUFF RHINO TOKEN";
+    string public constant symbol = "BUFF";
     uint256 public constant decimals = 18;
     uint256 public fee1;
     uint256 public fee2;
@@ -46,24 +46,21 @@ contract BUFFToken is IERC20 , ReentrancyGuard {
     Basis Tx and Wallet Limit : 1 = 1%
     */
 
-    constructor(string memory _name , string memory _ssymbol , uint256 tottalsupply , address _reciever1 , address _reciever2 , uint256 _fee1 , uint256 _fee2 , uint256 _fee3 , uint256 _MaxTx ) {
-        _totalSupply = tottalsupply * (10**18);
+    constructor( uint256 tottalsupply , uint256 _fee1 , uint256 _fee2 , uint256 _fee3 ,
+     uint256 _MaxTx , address eco_wallet , address reward_wallet , address treasuryWallet) {
+        _totalSupply = tottalsupply * (10**decimals);
         _balances[msg.sender] = _totalSupply;
         emit Transfer(address(0), msg.sender, _totalSupply);
-        //Temporary Addresses To recieve ... Will be canged to Multisigs
-        address1 = _reciever1 ; // fee recieving wallets ... Ecosystem MultiSig Wallet for the Ecosystem Revenue and Run Costs
-        address2 = _reciever2 ; // Ecosystem Multisig Reward and Incentive Pool
+        address1 = eco_wallet ; // Ecosystem Fee
+        address2 = reward_wallet ; // Liquidity Fee
         burnAddress = address(0); // burn this amount
         fee1 = _fee1;  
         fee2 = _fee2;
         fee3 = _fee3;
         maxTx= _MaxTx;
-        name= _name;
-        symbol= _ssymbol;
         Owner = msg.sender;
         lockedSwap = false;
-        excludeFromFee(msg.sender);
-        excludeFromTxLimit(msg.sender);
+        excludeFromAll(msg.sender , eco_wallet , reward_wallet , treasuryWallet);
     }
 
     /*
@@ -181,15 +178,13 @@ contract BUFFToken is IERC20 , ReentrancyGuard {
 
     function _transfer(address sender, address recipient, uint256 amount) internal nonReentrant {
         require(lockedSwap == false ,"Transacitons are temporarily disabled for this token");
-        uint256 outAmt= _totalSupply.mul(maxTx).div(100);
 
         //checks for exceptions
         if (!_excludedFromTxLimit[msg.sender]){
-        require(amount <= outAmt,"Amount Exceeds Allowed Transaction Limit, Retry or get Permission");
+        require(amount <= _totalSupply.mul(maxTx).div(100),"Amount Exceeds Allowed Transaction Limit, Retry or get Permission");
         }
-        uint256 senderBalance = _balances[sender];
-        require(senderBalance >= amount, "ERC20: transfer amount exceeds balance");
-        _balances[sender] = senderBalance.sub(amount);
+        require(_balances[sender] >= amount, "ERC20: transfer amount exceeds balance");
+        _balances[sender] = _balances[sender].sub(amount);
         _balances[recipient] = _balances[recipient].add(amount);
         emit Transfer(sender, recipient, amount);
     }
@@ -205,25 +200,25 @@ contract BUFFToken is IERC20 , ReentrancyGuard {
     }
 
 
-    //Admin Functions to Set Fee and Fee Reciever
+    //DAO Functions to Set Fee and Fee Reciever
 
-    function setFee(uint256 _fee1, uint256 _fee2) public returns(bool) {
+    function setFee(uint256 _fee1, uint256 _fee2 , uint256 _fee3) public returns(bool) {
         require(msg.sender == owner(), "Only the owner can set the fee");
         fee1 = _fee1;
         fee2 = _fee2;
-        emit SetFeePercentage(_fee1 + _fee2 , block.timestamp);
+        fee3 = _fee3;
+        emit SetFeePercentage(_fee1 + _fee2 + _fee3 , block.timestamp);
         return true;
     }
 
-    function setFeeAddress(address _address1, address _address2, address _address3) public returns(bool) {
+    function setFeeAddress(address _address1, address _address2) public returns(bool) {
         require(msg.sender == owner(), "Only the owner can set the address");
         address1 = _address1;
         address2 = _address2;
-        burnAddress = _address3;
         return true;
     }
 
-    //Admin Functions to set Limits and Exceptions
+    //DAO Functions to set Limits and Exceptions
     function excludeFromFee(address account) public returns(bool){
         require(msg.sender == owner(), "Only the owner can exclude addresses from fees");
         require(_isExcludedFromFee[account] == false ,"account already excluded");
@@ -267,7 +262,7 @@ contract BUFFToken is IERC20 , ReentrancyGuard {
         return true;
     }
 
-    //DAO functions to Lock and Unlock swap
+    //DAO functions to Lock , Unlock swap and change limits
 
     function lockSwap() public returns(bool){
         require (msg.sender == Owner , "Cant Lock , needs to be owner");
@@ -289,6 +284,18 @@ contract BUFFToken is IERC20 , ReentrancyGuard {
         require (msg.sender == Owner , "Cant Change, needs to be owner");
         maxTx = newLimit;
         return true;
+    }
+    //constructor function 
+
+    function excludeFromAll(address a , address b , address c , address d) internal {
+        _isExcludedFromFee[a] = true;
+        _isExcludedFromFee[b] = true;
+        _isExcludedFromFee[c] = true;
+        _isExcludedFromFee[d] = true;
+        _excludedFromTxLimit[a]=true;
+        _excludedFromTxLimit[b]=true;
+        _excludedFromTxLimit[c]=true;
+        _excludedFromTxLimit[d]=true;
     }
    
 }
