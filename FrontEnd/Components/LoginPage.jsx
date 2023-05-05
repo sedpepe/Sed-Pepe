@@ -20,7 +20,13 @@ const LoginPage = () => {
     
   return (
     <div>
-        {!connectedUser ? <button onClick={()=> Connector()}>CONNECT</button>:<div> <Link href={'./profile'}><button>{connectedUser.slice(0,4)}...{connectedUser.slice(38)} </button></Link></div>}
+        {!connectedUser ? <button className='bg-[#ffccff] h-10 w-32 justify-center flex items-center rounded-lg shadow-md' onClick={()=> Connector()}>CONNECT</button>:
+        <div className='bg-[#ffccff] h-10 w-32 justify-center flex items-center rounded-lg shadow-md'> 
+          <Link href={'./profile'}>
+          <button>
+            {connectedUser.slice(0,4)}...{connectedUser.slice(38)} 
+          </button></Link>
+          </div>}
     </div>
   )
 }

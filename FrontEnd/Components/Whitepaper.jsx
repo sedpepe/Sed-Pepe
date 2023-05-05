@@ -1,9 +1,9 @@
 import React from 'react'
-import S from "../ComponentCSS/PageCSS.module.css"
+
 
 const Whitepaper = () => {
   return (
-    <div className={S.FullPage}>
+    <div>
       <h1>WHITEPAPER</h1>
       
       <h2>Tokenomics of BUFF ECOSYTEM</h2>

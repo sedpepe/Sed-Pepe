@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract BUFFFinal is IERC20 , ReentrancyGuard {
+contract BUFFToken is IERC20 , ReentrancyGuard {
       // TYPES DEFINITIONS
     using SafeMath for uint256;
 
@@ -22,7 +22,6 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
     address private address2;
     address private burnAddress;
     uint256 private maxTx; //max transaction limit
-    uint256 private maxHoldLimit; // max limit per wallet to hold
     uint256 private _totalSupply;
     bool private lockedSwap; //StoreLockSwapStatus
 
@@ -32,7 +31,6 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
     mapping(address => uint256) private _balances; // balance mapping
     mapping(address => mapping(address => uint256)) private _allowances; //allowance mapping
     mapping(address => bool) private _isExcludedFromFee; //fee exclusion mapping
-    mapping(address => bool) private _excludedFromHoldLimit; // max wallet balance limit
     mapping(address => bool) private _excludedFromTxLimit; // max tx Limit
 
     // events -- name defines the event comments unneeded
@@ -48,7 +46,7 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
     Basis Tx and Wallet Limit : 1 = 1%
     */
 
-    constructor(string memory _name , string memory _ssymbol , uint256 tottalsupply , address _reciever1 , address _reciever2 , uint256 _fee1 , uint256 _fee2 , uint256 _fee3 , uint256 maxHLimit , uint256 _MaxTx ) {
+    constructor(string memory _name , string memory _ssymbol , uint256 tottalsupply , address _reciever1 , address _reciever2 , uint256 _fee1 , uint256 _fee2 , uint256 _fee3 , uint256 _MaxTx ) {
         _totalSupply = tottalsupply * (10**18);
         _balances[msg.sender] = _totalSupply;
         emit Transfer(address(0), msg.sender, _totalSupply);
@@ -62,11 +60,9 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
         maxTx= _MaxTx;
         name= _name;
         symbol= _ssymbol;
-        maxHoldLimit =maxHLimit ;
         Owner = msg.sender;
         lockedSwap = false;
         excludeFromFee(msg.sender);
-        excludefromHoldLimit(msg.sender);
         excludeFromTxLimit(msg.sender);
     }
 
@@ -122,16 +118,6 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
 
     function isExcludedFromTxLimit(address account) public view returns(bool){
         return _excludedFromTxLimit[account];
-    }
-
-    /*
-    Checks if wallet is Excluded from Wallet Balance limit
-
-    returns bool
-    */
-    
-    function isExcludedFromHoldLimit(address account) public view returns(bool){
-        return _excludedFromHoldLimit[account];
     }
 
     /*
@@ -196,17 +182,11 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
     function _transfer(address sender, address recipient, uint256 amount) internal nonReentrant {
         require(lockedSwap == false ,"Transacitons are temporarily disabled for this token");
         uint256 outAmt= _totalSupply.mul(maxTx).div(100);
-        uint256 senderLim = _totalSupply.mul(maxHoldLimit).div(100);
 
         //checks for exceptions
         if (!_excludedFromTxLimit[msg.sender]){
         require(amount <= outAmt,"Amount Exceeds Allowed Transaction Limit, Retry or get Permission");
         }
-
-        if(!_excludedFromHoldLimit[msg.sender]){
-        require (_balances[recipient].add(amount) < senderLim , "The Reciever Balance is already max of what is allowed to hold");
-        }
-
         uint256 senderBalance = _balances[sender];
         require(senderBalance >= amount, "ERC20: transfer amount exceeds balance");
         _balances[sender] = senderBalance.sub(amount);
@@ -227,12 +207,11 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
 
     //Admin Functions to Set Fee and Fee Reciever
 
-    function setFee(uint256 _fee1, uint256 _fee2, uint256 _fee3) public returns(bool) {
+    function setFee(uint256 _fee1, uint256 _fee2) public returns(bool) {
         require(msg.sender == owner(), "Only the owner can set the fee");
         fee1 = _fee1;
         fee2 = _fee2;
-        fee3 = _fee3;
-        emit SetFeePercentage(_fee1 + _fee2 + _fee3 , block.timestamp);
+        emit SetFeePercentage(_fee1 + _fee2 , block.timestamp);
         return true;
     }
 
@@ -278,21 +257,6 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
         return true;
     }
 
-    function excludefromHoldLimit(address account) public returns(bool) {
-        require (msg.sender == owner() , "Only Owner Function");
-        require(_excludedFromHoldLimit[account] == false , "Already Excluded");
-        _excludedFromHoldLimit[account] = true;
-        return true;
-    }
-
-
-    function includeInHoldLimit(address account) public returns(bool){
-        require (msg.sender == owner() , "Only Owner Function");
-        require(_excludedFromHoldLimit[account] == true , "Already Included");
-        _excludedFromHoldLimit[account] = false;
-        return true;
-    }
-
     //Transfer Ownership
 
     function transferOwnership(address newOwner) public returns(bool){
@@ -303,7 +267,7 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
         return true;
     }
 
-    //Admin Functions to Lock and Unlock swap
+    //DAO functions to Lock and Unlock swap
 
     function lockSwap() public returns(bool){
         require (msg.sender == Owner , "Cant Lock , needs to be owner");
@@ -320,16 +284,11 @@ contract BUFFFinal is IERC20 , ReentrancyGuard {
         emit TransactionStatus(true , block.timestamp);
         return true;
     }
-    //change limits
-
+    
     function changeMaxTxLimit(uint256 newLimit) external returns(bool){
         require (msg.sender == Owner , "Cant Change, needs to be owner");
         maxTx = newLimit;
         return true;
     }
-    function changeMaxHoldLimit(uint256 newLimit) external returns(bool){
-        require (msg.sender == Owner , "Cant Change, needs to be owner");
-        maxHoldLimit = newLimit;
-        return true;
-    }
+   
 }

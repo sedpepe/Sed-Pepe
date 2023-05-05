@@ -49,6 +49,6 @@ For any questions, suggestions, join our discord at [https://discord.gg/thirdweb
 
 ## RELEASES - Click Link 
 
-Buff Token (Primary ERC20): https://thirdweb.com/contracts/release/QmQzMtxYthSqBtX79EmoeX1XCTvisxF7NigVv4aXFtpgXr
+Buff Token (Primary ERC20): https://thirdweb.com/contracts/publish/QmWkSDWUk9zmTn6DuwaFV13EKAt3zwpBS1ttQX8EgQByzu
 Buff Rewards (Secondary ERC20) : https://thirdweb.com/contracts/release/QmUKYU9qRyUhaysPGj6QCJUgARJx3zwSDKURYnm29VQzyE
 Buff Locker : https://thirdweb.com/contracts/release/QmfNxdLaVSqcEa76twPjFNdq7ej7YEoDF8BhjyRK55yPgy

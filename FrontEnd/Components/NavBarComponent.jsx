@@ -3,14 +3,13 @@ import { AppContext } from '../Api/contextApi';
 import { useContext } from 'react';
 import LoginPage from './LoginPage';
 import Link from 'next/link';
-import S from "../ComponentCSS/PageCSS.module.css";
-import Image from 'next/image';
 
 const NavBarComponent = () => {
     const {connectedUser} =useContext(AppContext);
+    
   return (
-    <div className={S.navbar}>
-        <div className={S.logo}>
+    <div className='flex flex-row justify-between pl-20 pr-20 bg-gray-50 items-center h-20 gap-8'>
+        <div className='flex w-40 rounded-2xl justify-center pt-2 pb-2'>
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
       width="70.000000pt" height="50.000000pt" viewBox="0 0 900.000000 900.000000"
       preserveAspectRatio="xMidYMid meet">
@@ -1084,15 +1083,17 @@ const NavBarComponent = () => {
       </svg>
         </div>
 
-        <div className={S.navR}>
-      <div className={S.navmenu}>
-      <Link href ={'./'}><div>Home</div></Link>
-        <Link href ={'./litepaper'}><div>Litepaper</div></Link>
-        <Link href ={'./profile'}><div>Dashboard</div></Link>
+        <div className='flex flex-row justify-center w-3/4 gap-8'>
+      <div className='flex flex-row gap-4 text-slate-800 items-center text-xl font-bold'>
+      <Link href ={'./'}><div className='flex rounded-xl p-2 hover:text-red-500 cursor-pointer hover:scale-110'>HOME</div></Link>
+        <Link href ={'./litepaper'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>LITEPAPER</div></Link>
+        <Link href ={'./'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>MINT</div></Link>
+        <Link href ={'./'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>TEAM</div></Link>
+        <Link href ={'./profile'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>PROFILE</div></Link>
       </div>
-      <div>
+      </div>
+      <div className='flex justify-end'>
          <LoginPage/>
-      </div>
       </div>
     </div>
   )

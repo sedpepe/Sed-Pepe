@@ -1,17 +1,16 @@
 import React from 'react'
 import { useContext } from 'react'
 import { AppContext } from '../Api/contextApi';
-import S from "../ComponentCSS/PageCSS.module.css"
 
 const HomePage = () => {
     const {connectedUser ,MintNFT } =useContext(AppContext);
   return (
-    <div className={S.FullPage}>
+    <div>
         <h1>BUFF RHINO</h1>
 
         <div>
           <h2>ABOUT</h2>
-          <div className={S.paragraph}>
+          <div>
           <p>BUFF RHINO is a Meme Coin Ecosystem 
             and a Wealth Generation Project on Ethereum L2 Solution
             Arbitrum that has a 
@@ -41,7 +40,7 @@ const HomePage = () => {
           <h2>
             Our Features :
           </h2>
-          <div className={S.paragraph}>
+          <div>
             <div>
               <h4>BUFF TOKEN :</h4>
               <p>
