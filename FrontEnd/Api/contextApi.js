@@ -1,7 +1,7 @@
 import React, {useState , useEffect  } from 'react';
 import { ethers } from 'ethers';
 //Internal Imp
-import { arbTestChainId } from './networks';
+import { arbTestChainId , arbChainId } from './networks';
 import {
     connectToDrop , 
     //connectToNFTMarket , 
@@ -40,12 +40,12 @@ export const AppProvider = ({children}) =>{
             }
             let chainId = await ethereum.request({ method: "eth_chainId" });
             console.log("Connected to " + chainId);
-            if (chainId !== arbTestChainId) {
-              alert("Please connect to Arbitrum Test Network");
-              ChangeNetworktoArbTest();
-              setNetworkError(false);
-            } else {
+            if (chainId !== arbChainId) {
+              alert("Please connect to Arbitrum One Network");
+              ChangeNetworktoArb();
               setNetworkError(true);
+            } else {
+              setNetworkError(false);
             }
             const accounts = await connectWallet();
             setLoading(true);

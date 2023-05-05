@@ -74,3 +74,4 @@ export const baseTestNetwork = [
 export const arbTestChainId = "0x66eed";
 export const baseTestChaidId="0x14a33";
 export const lineaTestChainId="0xe704";
+export const arbChainId = "0xa4b1";

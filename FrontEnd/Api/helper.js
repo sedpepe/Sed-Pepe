@@ -11,7 +11,7 @@ import DropJson from "./abis/drop.json";
 //Constansts - Addresses
 
 //const {DROP_ADDR , M_ADDR , ERCSTAKE_ADDR ,N_ST_ADR } = process.env;
-const TKN_ADDR = "0x814C2ca43F16342d8D4e6405Ee967d1cb2C2C54d";
+const TKN_ADDR = "0xCf290Ef8E5C50Da793e7B2952E6135a1420aEfa4";
 const DROP_ADDR = "0xB82A5Fcd5740a76975eD30c9b2e1945D8cC956A4"
 //Constants- ABIs
 
