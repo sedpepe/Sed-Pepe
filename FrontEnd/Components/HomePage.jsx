@@ -15,11 +15,11 @@ const HomePage = () => {
         <div className=' gap-8 flex flex-col'>
         <h1 className='font-semibold text-5xl text-center text-white underline-offset-8 underline'>SED PEPE</h1>
         
-        <div className='flex items-center mx-32 pb-8'>  
+        <div className='flex items-center mx-64 pb-8'>  
           <Image src='/lgo.png' width={400} height={400}/>
         </div>
         
-        <div className='w-[40rem]'>
+        <div className='w-[60rem]'>
         <p className=' font-medium text-2xl text-center text-white'> 
         Pepe has become Sad of all the Atrocities of Humanity and Pepe is on the Brink of Devastation. Pepe is 
         very fed up of the World and its ways and is here to change that ! He wants the War to stop ASAP and will help in 
