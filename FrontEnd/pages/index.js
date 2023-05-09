@@ -11,7 +11,7 @@ export default function Home() {
   const {connectedUser , fetchBalances} =useContext(AppContext);
   return (
     <div>
-      <main className=' bg-[#101023] text-white'>
+      <main>
            <HomePage/>
       </main>
     </div>

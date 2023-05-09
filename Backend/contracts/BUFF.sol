@@ -7,13 +7,13 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract BUFF_RHINO_TOKEN is IERC20 , ReentrancyGuard {
+contract SedPepe is IERC20 , ReentrancyGuard {
       // TYPES DEFINITIONS
     using SafeMath for uint256;
 
     // state variables
-    string public constant name = "BUFF RHINO TOKEN";
-    string public constant symbol = "BUFF";
+    string public constant name = "Sed Pepe";
+    string public constant symbol = "SPEPE";
     uint256 public constant decimals = 18;
     uint256 public fee1;
     uint256 public fee2;

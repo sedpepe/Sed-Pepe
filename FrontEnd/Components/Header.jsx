@@ -6,9 +6,9 @@ const Header = () => {
   return (
     <div>
     <Head>
-      <title>BUFF RHINO</title>
-        <meta name="description" content="The Official Site for BUFF RHINO Protocol" />
-        <link rel="icon" href="/bufflogofull.png" />
+      <title>SED PEPE</title>
+        <meta name="description" content="The Official Site for Sed Pepe" />
+        <link rel="icon" href="/lgo.png" />
       </Head>
     </div>
   )
