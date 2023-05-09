@@ -12,7 +12,6 @@ module.exports = {
     extend: {},
     fontFamily:{
       a: ["Abril Fatface", "cursive"],
-      b: ["Bruno Ace SC", "cursive"],
       c:[],
     }
   },

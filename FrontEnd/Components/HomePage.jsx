@@ -21,8 +21,9 @@ const HomePage = () => {
         
         <div className='w-[40rem]'>
         <p className=' font-medium text-2xl text-center text-white'> 
-        Pepe has become Sad of all the Atrocities of Humanity and Pepe is on the Brink of Devastation. The Wars , The Greed 
-        , The Scams all have frustrated Pepe and he is now very very Sad !
+        Pepe has become Sad of all the Atrocities of Humanity and Pepe is on the Brink of Devastation. Pepe is 
+        very fed up of the World and its ways and is here to change that ! He wants the War to stop ASAP and will help in 
+        all possible ways to bring Peace to the world in whatever small way possible.
         </p>
         </div>
         </div>

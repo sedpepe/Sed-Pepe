@@ -16,7 +16,7 @@ const NavBarComponent = () => {
         </div>
 
         <div className='flex flex-row justify-center w-3/4 gap-8'>
-      <div className='flex flex-row gap-4 text-white items-center text-xl font-bold font-b'>
+      <div className='flex flex-row gap-4 text-white items-center text-xl font-bold font-a'>
       <Link href ={'./'}><div className='flex rounded-xl p-2 hover:text-red-500 cursor-pointer hover:scale-110'>HOME</div></Link>
         <Link href ={'./litepaper'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>LITEPAPER</div></Link>
         <Link href ={'./'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>MINT</div></Link>
