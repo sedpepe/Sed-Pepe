@@ -198,7 +198,7 @@ export const AppProvider = ({children}) =>{
     return (
         <AppContext.Provider value={{connectedUser ,loading,networkError,isUserLoggedIn , BuffTokenBalance //states
         ,CollectionBalance , CollectionURI , CollectionSymbol , TokenName ,CollectionName , TokenSymbol , TokenTotalSupply,TokenRemainingSupply,
-        approveBuffToken , transferBuffToken ,burnBuffToken , getNFTCollectionName, fetchTokenDetails, NFTSafeTransfer,getNFTCollectionBalance,MintNFT, fetchBalances //functions
+        approveBuffToken , transferBuffToken ,burnBuffToken , getNFTCollectionName, fetchTokenDetails, NFTSafeTransfer,getNFTCollectionBalance,MintNFT, fetchBalances , fetchUser //functions
         }}>
             {children}
         </AppContext.Provider>

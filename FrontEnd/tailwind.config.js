@@ -10,6 +10,11 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily:{
+      a: ["Abril Fatface", "cursive"],
+      b: ["Bruno Ace SC", "cursive"],
+      c:[],
+    }
   },
   plugins: [],
 }

@@ -1,17 +1,16 @@
 import React from 'react'
-import { connectWallet } from '../Api/helper'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { AppContext } from '../Api/contextApi'
 import Link from 'next/link'
 const LoginPage = () => {
-  const {connectedUser,BuffTokenBalance , fetchBalances} =useContext(AppContext);
+  const {connectedUser,BuffTokenBalance , fetchUser} =useContext(AppContext);
   const route = useRouter();
   console.log(BuffTokenBalance);
   const Connector = async()=>{
         try {
-          await connectWallet();
+          await fetchUser();
           window.location.reload();
         } catch (error) {
             console.log(error);
