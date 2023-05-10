@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily:{
-      a: ["Darumadrop One", "cursive"],
+      a: ["Exo 2", "sans-serif"],
       c:[],
     }
   },
