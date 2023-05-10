@@ -17,7 +17,7 @@ const HomePage = () => {
         <div className=' gap-8 flex flex-col'>
         <h1 className='font-semibold text-5xl text-center text-white underline-offset-8 underline'>SED PEPE</h1>
         
-        <div className='flex items-center mx-64 pb-8'>  
+        <div className='flex items-center mx-64 pb-8 cursor-pointer'>  
           <Image src='/lgo.png' width={400} height={400}/>
         </div>
         
@@ -40,7 +40,7 @@ const HomePage = () => {
 
           <h4 className='font-semibold text-2xl pt-12 text-white pt-8'>Powered By :</h4>
           <div className='flex gap-8 pt-2'>
-          <Link href={"./"}><Image src='/thirdweb.svg' width={90} height={90}/></Link>
+          <Link href={"./"}><Image src='/therdWeed.svg' width={90} height={90}/></Link>
           <Link href={"./"}><Image src='/Arbitrum.png' width={100} height={100}/></Link>
           </div>
 
