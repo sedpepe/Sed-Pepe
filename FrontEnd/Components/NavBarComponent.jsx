@@ -30,7 +30,7 @@ const NavBarComponent = () => {
           <h4 className=' text-3xl font-a text-white font-semibold'> SED PEPE</h4>
         </div></Link>
 
-        <div className='flex flex-row w-3/4 items-center'>
+        <div className='flex flex-row w-3/5 items-center'>
 
       <div className='flex flex-row gap-4 text-white items-center text-xl font-bold font-a justify-center'>
       <Link href ={'./'}><div className='flex rounded-xl p-2 hover:text-red-500 cursor-pointer hover:scale-110'>HOME</div></Link>
