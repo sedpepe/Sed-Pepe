@@ -8,9 +8,9 @@ import Link from 'next/link';
 const HomePage = () => {
     const {connectedUser ,MintNFT } =useContext(AppContext);
   return (
-    <div className=' bg-[#47d147] text-black w-screen h-screen font-a'>
+    <div className=' bg-[#2b892b] text-black w-screen h-screen font-a'>
       <div className='flex justify-start absolute inset-y-22 w-screen h-screen inset-x-0 ' style={{ opacity: 0.18 }}>
-      <Image src="/bg.gif" layout="fill" objectFit="cover" />
+      <Image src="/bg.gif" layout="fill" objectFit="cover" alt="Sed Pepe"/>
       </div>
 
       <div className="relative z-10 pt-8 flex flex-col items-center">
@@ -18,7 +18,7 @@ const HomePage = () => {
         <h1 className='font-semibold text-5xl text-center text-white underline-offset-8 underline cursor-pointer'>SED PEPE</h1>
         
         <div className='flex items-center mx-64 pb-8 cursor-pointer'>  
-          <Image src='/lgo.png' width={400} height={400}/>
+          <Image src='/lgo.png' width={400} height={400} alt="Sed Pepe"/>
         </div>
         
         <div className='w-[60rem]'>
@@ -30,14 +30,14 @@ const HomePage = () => {
         </div>
         </div>
 
-        <div className=' w-screen h-[25rem] flex justify-center pt-24'>
-          <div className='bg-[#33cc33] w-[80rem] flex flex-col rounded-2xl border-2 drop-shadow-lg text-center pt-4'>
+        <div className=' w-screen h-[22rem] flex justify-center pt-12'>
+          <div className='bg-[#268426] w-[80rem] flex flex-col rounded-2xl border-2 drop-shadow-lg text-center pt-4'>
             <h3 className="font-a text-white text-2xl underline pb-4">About</h3>
             <div className='flex justify-center'>
               <p className='font-a text-white text-lg w-[55rem]'>
               Sed Pepe $SPEPE is a Meme Coin Project on Ethereum L2 Solution
               Arbitrum. Pepe After Witnessing all the Violence , Hatred , Greed and Atrocities Committed by Humanity has 
-              become extremely Sad with the Humans. He has now come in the form of a Deflationary ERC-20 Token that donates 
+              become extremely Sad with the Humans. He has now come in the form of a Deflationary ERC-20 Token with a 4% tax on Buy/Sell that donates 
               a Percentage of each Buy & Sell for Humanitarian Causes. He also Boasts a Strong Deflationary Mechanism That Burns
               1.5% of each Buy/Sell of $SPEPE. Not Only have he come with a Noble Cause but also with UTILITY unlike other PEPE Versions, 
               $SPEPE will feature a Full Ecosystem down the line that is revolved Around the token including but not limited to De-Fi , NFTs 
