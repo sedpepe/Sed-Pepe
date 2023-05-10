@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily:{
-      a: ["Exo 2", "sans-serif"],
+      a: ["Abril Fatface", "sans-serif"],
       c:[],
     }
   },
