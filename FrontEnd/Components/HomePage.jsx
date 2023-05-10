@@ -15,7 +15,7 @@ const HomePage = () => {
 
       <div className="relative z-10 pt-8 flex flex-col items-center">
         <div className=' gap-8 flex flex-col'>
-        <h1 className='font-semibold text-5xl text-center text-white underline-offset-8 underline'>SED PEPE</h1>
+        <h1 className='font-semibold text-5xl text-center text-white underline-offset-8 underline cursor-pointer'>SED PEPE</h1>
         
         <div className='flex items-center mx-64 pb-8 cursor-pointer'>  
           <Image src='/lgo.png' width={400} height={400}/>

@@ -131,14 +131,6 @@ export const AppProvider = ({children}) =>{
       }
     }
 
-    useEffect(()=>{
-      fetchUser();
-      fetchBalances();
-      fetchTokenDetails();
-      getNFTCollectionBalance();
-      getNFTCollectionName();
-    },[]);
-
     const MintNFT = async({user, id,amount, _currency, _pricePerToken, _allowlistProof, _data })=>{
         try {
             const connect = await connectToDrop();
