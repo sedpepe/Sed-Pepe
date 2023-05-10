@@ -42,6 +42,8 @@ const HomePage = () => {
           <Image src='/thirdweb.svg' width={90} height={90}/>
           <Image src='/Arbitrum.png' width={100} height={100}/>
           </div>
+
+          
       </div>
     </div>
   )

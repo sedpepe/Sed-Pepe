@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }) {
     <Header/>
       <NavBarComponent/>
       <Component {...pageProps} />
+      {/*<Footer/>*/}
     </AppProvider>
     </ThirdwebProvider>
   );
