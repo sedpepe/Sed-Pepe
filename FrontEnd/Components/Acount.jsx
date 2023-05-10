@@ -17,7 +17,7 @@ const Acount = ({connectedUser , BuffTokenBalance , CollectionName,TokenSymbol,t
   return (
     <div className=' bg-[#47d147] text-black w-screen h-screen font-a'>
       <div className='flex justify-start absolute inset-y-22 w-full h-full inset-x-0' style={{ opacity: 0.18 }}>
-      <Image src="/bg.gif" layout="fill" objectFit="cover" />
+      <Image src="/bg.gif" layout="fill" objectFit="cover" alt="nun" />
       </div>
       <h3>Address : {connectedUser}</h3>
       <h5>{TokenSymbol} Balance : {BuffTokenBalance}</h5>

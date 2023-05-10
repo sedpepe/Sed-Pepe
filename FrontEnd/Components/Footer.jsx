@@ -7,10 +7,10 @@ const Footer = () => {
           <div className='flex gap-8 items-center justify-start pr-4 pl-4 bg-[#3aac3a] p-1 rounded-3xl drop-shadow-lg h-12'>
           <h2 className='font-semibold text-lg text-white'>Socials:</h2>
           <div className=' flex pr-1 gap-4'>
-            <Link href={"https://twitter.com/pepe_sed"}><Image src='/twitter.png' width={40} height={40} className="pt-2"/></Link>
-            <Link href={"https://t.me/sedpepe_chat"}><Image src='/tg2.png' width={40} height={40} className="pt-2"/></Link>
-            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='/uni.png' width={40} height={40} className="pt-1"/></div>
-            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='https://etherscan.io/images/brandassets/etherscan-logo-circle.svg' width={30} height={30} className='pt-3'/></div>
+            <Link href={"https://twitter.com/pepe_sed"}><Image src='/twitter.png' width={40} height={40} className="pt-2" alt="twitter"/></Link>
+            <Link href={"https://t.me/sedpepe_chat"}><Image src='/tg2.png' width={40} height={40} className="pt-2" alt="telegram"/></Link>
+            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='/uni.png' width={40} height={40} className="pt-1" alt="Uniswap"/></div>
+            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='https://etherscan.io/images/brandassets/etherscan-logo-circle.svg' width={30} height={30} className='pt-3' alt="etherscan"/></div>
           </div>
           </div>
 

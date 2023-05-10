@@ -10,7 +10,7 @@ const BuyPEPE = () => {
       </div>
 
       <div className='relative z-10 items-center text-center flex flex-col justify-center gap-8 w-screen'>
-        <Image src={'/sorry.gif'} height={800} width={800}/>
+        <Image src={'/sorry.gif'} height={800} width={800} alt="Dancing Sad Pepe"/>
         <div className=' text-white font-a rounded-full p-5 shadow-xl bg-[#2b892b] gap-4 flex flex-col justify-between w-6/12 h-[11rem] hover:text-yellow-300'>
         <h1 className='text-4xl font-bold'>SORRY !! Trades Are Not Open Yet !</h1>
         <h1 className='text-4xl font-bold '> Coming Soon!</h1>
