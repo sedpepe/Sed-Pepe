@@ -25,7 +25,7 @@ const NavBarComponent = () => {
 
   return (
     <div className='flex flex-row justify-between pr-20 bg-[#33cc33] items-center h-20 gap-8'>
-        <Link href={"./"}><div className='flex w-full rounded-2xl justify-center pl-24 pt-2 pb-2 items-center gap-4 cursor-pointer'>
+        <Link href={"./"}><div className='flex w-96 rounded-2xl justify-center pl-24 pt-2 pb-2 items-center gap-4 cursor-pointer'>
           <Image src="/lgo.png" width={80} height={80} alt="Sed Pepe Logo"/>
           <h4 className=' text-3xl font-a text-white font-semibold'> SED PEPE</h4>
         </div></Link>
