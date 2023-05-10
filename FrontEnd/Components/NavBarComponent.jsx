@@ -36,7 +36,7 @@ const NavBarComponent = () => {
         <Link href ={'./'}><div className='flex rounded-xl p-2 hover:text-red-500 cursor-pointer hover:scale-110'>HOME</div></Link>
         <Link href ={'./litepaper'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>LITEPAPER</div></Link>
         <Link href ={'./'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>ROADMAP</div></Link>
-        <Link href ={'./'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>TEAM</div></Link>
+        <Link href ={'./mint-id'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>MINT IDs</div></Link>
         <Link href ={'./buypepe'}><div className='flex rounded-xl p-2  hover:text-red-500 cursor-pointer hover:scale-110'>BUY $SPEPE</div></Link>
       </div>
       
