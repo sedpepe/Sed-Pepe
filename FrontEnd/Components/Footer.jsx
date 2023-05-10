@@ -1,20 +1,21 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 const Footer = () => {
   return (
-    <div>
-        <h2 className='font-semibold text-4xl pt-16 text-white underline-offset-8 underline'>Links:</h2>
-          <div className='flex pt-12 gap-8 items-center'>
-            <Image src='/twitter.png' width={100} height={100}/>
-            <Image src='/tg2.png' width={100} height={100}/>
-            <Image src='/uni.png' width={100} height={100}/>
-            <Image src='https://etherscan.io/images/brandassets/etherscan-logo-circle.svg' width={75} height={75} className='pt-4'/>
-          </div> 
+    <div className='flex bg-[#47d147] items-center h-16 gap-2 w-screen justify-center'>
+          <div className='flex gap-4 items-center justify-start pl-16 bg-[#3aac3a] p-1 rounded-3xl drop-shadow-lg h-12'>
+          <h2 className='font-semibold text-2xl text-white'>Socials:</h2>
+            <Link href={"https://twitter.com/pepe_sed"}><Image src='/twitter.png' width={40} height={40} className="pt-2"/></Link>
+            <Link href={"https://t.me/sedpepe_chat"}><Image src='/tg2.png' width={40} height={40} className="pt-2"/></Link>
+            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='/uni.png' width={40} height={40} className="pt-1"/></div>
+            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='https://etherscan.io/images/brandassets/etherscan-logo-circle.svg' width={30} height={30} className='pt-3'/></div>
+          </div>
 
-          <h4 className='font-semibold text-2xl pt-12 text-white pt-24'>Powered By :</h4>
-          <div className='flex gap-8 pt-2'>
-          <Image src='/thirdweb.svg' width={90} height={90}/>
-          <Image src='/Arbitrum.png' width={100} height={100}/>
+          <div className='flex gap-4 items-center justify-end pl-16 bg-[#3aac3a] p-1 rounded-3xl drop-shadow-lg h-12'>
+          <h4 className='font-semibold text-2xl  text-white'>Powered By :</h4>
+          <Link href={"./"}><Image src='/therdWeed.svg' width={35} height={35} className="pt-2"/></Link>
+          <Link href={"./"}><Image src='/Arbitrum.png' width={40} height={40} className="pt-2"/></Link>
           </div>
     </div>
   )

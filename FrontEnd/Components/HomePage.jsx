@@ -9,7 +9,7 @@ const HomePage = () => {
     const {connectedUser ,MintNFT } =useContext(AppContext);
   return (
     <div className=' bg-[#47d147] text-black w-screen h-screen font-a'>
-      <div className='flex justify-start absolute inset-y-22 w-full h-full inset-x-0' style={{ opacity: 0.18 }}>
+      <div className='flex justify-start absolute inset-y-22 w-full h-full inset-x-0 ' style={{ opacity: 0.18 }}>
       <Image src="/bg.gif" layout="fill" objectFit="cover" />
       </div>
 
@@ -30,20 +30,23 @@ const HomePage = () => {
         </div>
         </div>
 
-        <h2 className='font-semibold text-4xl pt-12 text-white underline-offset-8 underline'>Links:</h2>
-          <div className='flex pt-8 gap-8 items-center'>
-            <Link href={"https://twitter.com/pepe_sed"}><Image src='/twitter.png' width={100} height={100}/></Link>
-            <Link href={"https://t.me/sedpepe_chat"}><Image src='/tg2.png' width={100} height={100}/></Link>
-            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='/uni.png' width={100} height={100}/></div>
-            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='https://etherscan.io/images/brandassets/etherscan-logo-circle.svg' width={75} height={75} className='pt-4'/></div>
-          </div> 
-
-          <h4 className='font-semibold text-2xl pt-12 text-white pt-8'>Powered By :</h4>
-          <div className='flex gap-8 pt-2 items-center'>
-          <Link href={"./"}><Image src='/therdWeed.svg' width={90} height={90}/></Link>
-          <Link href={"./"}><Image src='/Arbitrum.png' width={100} height={100}/></Link>
+        <div className=' w-screen h-[25rem] flex justify-center pt-24'>
+          <div className='bg-[#33cc33] w-[80rem] flex flex-col rounded-2xl border-2 drop-shadow-lg text-center pt-4'>
+            <h3 className="font-a text-white text-2xl underline pb-4">About</h3>
+            <div className='flex justify-center'>
+              <p className='font-a text-white text-lg w-[55rem]'>
+              Sed Pepe $SPEPE is a Meme Coin Project on Ethereum L2 Solution
+              Arbitrum. Pepe After Witnessing all the Violence , Hatred , Greed and Atrocities Committed by Humanity has 
+              become extremely Sad with the Humans. He has now come in the form of a Deflationary ERC-20 Token that donates 
+              a Percentage of each Buy & Sell for Humanitarian Causes. He also Boasts a Strong Deflationary Mechanism That Burns
+              1.5% of each Buy/Sell of $SPEPE. Not Only have he come with a Noble Cause but also with UTILITY unlike other PEPE Versions, 
+              $SPEPE will feature a Full Ecosystem down the line that is revolved Around the token including but not limited to De-Fi , NFTs 
+              ,NFT-Fi and Many More!   
+              </p>
+          
+            </div>
           </div>
-
+        </div>
 
       </div>
     </div>
