@@ -34,8 +34,8 @@ const HomePage = () => {
           <div className='flex pt-8 gap-8 items-center'>
             <Link href={"https://twitter.com/pepe_sed"}><Image src='/twitter.png' width={100} height={100}/></Link>
             <Link href={"https://t.me/sedpepe_chat"}><Image src='/tg2.png' width={100} height={100}/></Link>
-            <Link href={"./"}><Image src='/uni.png' width={100} height={100}/></Link>
-            <Link href={"./"}><Image src='https://etherscan.io/images/brandassets/etherscan-logo-circle.svg' width={75} height={75} className='pt-4'/></Link>
+            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='/uni.png' width={100} height={100}/></div>
+            <div className='cursor-pointer' onClick={()=>alert("Token Not Tradeable Yet!")}><Image src='https://etherscan.io/images/brandassets/etherscan-logo-circle.svg' width={75} height={75} className='pt-4'/></div>
           </div> 
 
           <h4 className='font-semibold text-2xl pt-12 text-white pt-8'>Powered By :</h4>
