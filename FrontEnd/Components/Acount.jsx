@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 import React, { useState } from 'react'
+import Image from 'next/image';
 
 const Acount = ({connectedUser , BuffTokenBalance , CollectionName,TokenSymbol,transferBuffToken}) => {
   const [addressInput , setInputA] = useState("");
@@ -14,7 +15,10 @@ const Acount = ({connectedUser , BuffTokenBalance , CollectionName,TokenSymbol,t
     }
   }
   return (
-    <div>
+    <div className=' bg-[#47d147] text-black w-screen h-screen font-a'>
+      <div className='flex justify-start absolute inset-y-22 w-full h-full inset-x-0' style={{ opacity: 0.18 }}>
+      <Image src="/bg.gif" layout="fill" objectFit="cover" />
+      </div>
       <h3>Address : {connectedUser}</h3>
       <h5>{TokenSymbol} Balance : {BuffTokenBalance}</h5>
       <h4>NFT COLLECTION NAME : {CollectionName}</h4>
