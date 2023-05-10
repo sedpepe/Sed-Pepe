@@ -39,7 +39,7 @@ const HomePage = () => {
           </div> 
 
           <h4 className='font-semibold text-2xl pt-12 text-white pt-8'>Powered By :</h4>
-          <div className='flex gap-8 pt-2'>
+          <div className='flex gap-8 pt-2 items-center'>
           <Link href={"./"}><Image src='/therdWeed.svg' width={90} height={90}/></Link>
           <Link href={"./"}><Image src='/Arbitrum.png' width={100} height={100}/></Link>
           </div>
