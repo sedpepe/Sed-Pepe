@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily:{
-      a: ["Abril Fatface", "cursive"],
+      a: ["Darumadrop One", "cursive"],
       c:[],
     }
   },
