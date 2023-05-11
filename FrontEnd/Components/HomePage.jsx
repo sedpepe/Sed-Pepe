@@ -35,8 +35,8 @@ const HomePage = () => {
         </div>
 
         <div className=' w-11/12 flex justify-center pt-2 md:pt-12 md:w-screen '>
-          <div className='bg-[#268426] w-11/12 md:w-[80rem] h-[25.5rem] md:h[22rem] flex flex-col rounded-2xl border-2 drop-shadow-lg text-center pt-4'>
-            <h3 className="font-a text-white text-2xl underline pb-2 md:pt-8 md:pb-4">About</h3>
+          <div className='bg-[#268426] w-11/12 md:w-[80rem] h-[25.5rem] md:h[22rem] flex flex-col rounded-2xl border-2 drop-shadow-lg text-center pt-2'>
+            <h3 className="font-a text-white text-2xl underline pb-1 md:pt-8 md:pb-4">About</h3>
             <div className='flex justify-center p-2'>
               <p className='font-a text-white text-lg w-[55rem] pb-4 md:pt-8'>
               Sed Pepe $SPEPE is a Meme Coin Project on Ethereum L2 Solution
