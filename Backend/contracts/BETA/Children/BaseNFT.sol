@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: MIT
 
+//Add checks for ID Owner on all necessary functions on Inherited Contracts
+
+//Add Checks in Edit Unique Tag function to check if a function is unique
+
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -11,7 +15,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable, Ownable, ReentrancyGuard {
+contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
     using SafeMath for uint256;
 
@@ -32,20 +36,36 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
         bool isBlacklistedUser;
     }
     address private feeToken;
+    uint256 private transferFee;
 
     mapping(address => bool) private isAllowedOperator;
     mapping(address => mapping(uint256 => uint256)) private lockerbalances;
+    mapping(uint256 => uint256) private inherentBalances;
     mapping(address => mapping(uint256 => Value)) private _value;
     mapping(uint256 => UserProfile) private _user;
 
 
-    constructor(address token) ERC721("Sed-Pepe Profiles", "$PP") {
+    constructor(address token , uint256 feeForInherentTransfer) ERC721("Sed-Pepe Profiles", "$PP") {
         feeToken = token;
         allowOperator(msg.sender);
+        transferFee = feeForInherentTransfer;
     }
 
     function baseURI() external pure returns (string memory) {
         return "ipfs://QmUjdfyZm87CkjfGL95rZdeustBv2hGab5iNTXNgLNU4oL";
+    }
+
+    function getInherentBal(uint256 id) external view returns(uint256){
+        return inherentBalances[id];
+    }
+
+    function setFeeForNftTransfer(uint256 fee) public {
+        require(isAllowedOperator[msg.sender] == true);
+        transferFee = fee;
+    }
+
+    function IVTransfer(uint256 id) internal {
+        inherentBalances[id] = inherentBalances[id].add(transferFee);
     }
 
     function Mint(string memory uri) external {
@@ -60,7 +80,6 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
     function addCollateral(uint256 id , uint256 amount ) external nonReentrant {
         require(isAllowedOperator[msg.sender] == true); 
         require(id < _tokenIdCounter.current(),"ID Does Not Exist");
-        require(amount > 0 ,"Amount Cannot be 0");
         _value[feeToken][id].availableValue = _value[feeToken][id].availableValue.add(amount);
         _value[feeToken][id].totalDeposited = _value[feeToken][id].totalDeposited.add(amount);
     }
@@ -144,12 +163,18 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
     }
 
     function allowOperator(address add) public {
-        require(isAllowedOperator[msg.sender] == true || msg.sender == owner());
+        require(msg.sender == owner());
         isAllowedOperator[add] = true;
     }
     function disallowOperator(address add) public {
-        require(isAllowedOperator[msg.sender] == true || msg.sender == owner());
+        require(msg.sender == owner());
         isAllowedOperator[add] = false;
+    }
+
+    function transferCollateral(uint256 fromId , uint256 toId , uint256 amount) public {
+        require(isAllowedOperator[msg.sender] == true);
+        _value[feeToken][fromId].availableValue = _value[feeToken][fromId].availableValue.sub(amount);
+        _value[feeToken][toId].totalWithdrawn = _value[feeToken][toId].totalWithdrawn.add(amount);
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public override(ERC721 , IERC721) {
@@ -157,6 +182,7 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
         super.safeTransferFrom(from, to, tokenId, _data);
+        IVTransfer(tokenId);
     }
     
     function safeTransferFrom(address from, address to, uint256 tokenId) public override(ERC721 , IERC721) {
@@ -164,6 +190,7 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
         super.safeTransferFrom(from, to, tokenId);
+        IVTransfer(tokenId);
     }
 
     function transferFrom(address from, address to, uint256 tokenId) public override(ERC721 , IERC721) {
@@ -171,6 +198,7 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
         super.transferFrom(from, to, tokenId);
+        IVTransfer(tokenId);
     }
     
     function ownerOf(uint256 tokenId) public view override(ERC721 , IERC721) returns (address) {
@@ -184,21 +212,11 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
     function editUniqueTag(string memory tag , uint256 id )external{
         require(isAllowedOperator[msg.sender] == true);
         require(id < _tokenIdCounter.current(),"ID Does Not Exist");
-        require(isUnique(tag), "Unique ID already used");
         _user[id].UniqueTag = tag; 
     }
     
     function getUinqueTag(uint256 id) external view returns(string memory){
         return _user[id].UniqueTag;
-    }
-
-    function isUnique(string memory _uniquetag) public view returns (bool) {
-    for (uint i = 0; i < _tokenIdCounter.current(); i++) {
-        if (keccak256(bytes(_user[i].UniqueTag)) == keccak256(bytes(_uniquetag))) {
-            return false;
-        }
-    }
-    return true;
     }
 
     function getAvailableCollateral (uint256 id ) external view returns (uint256){
@@ -231,12 +249,6 @@ contract SedPepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721
 
     function approve(address to, uint256 tokenId) public override(ERC721 , IERC721) {
         super.approve(to, tokenId);
-    }
-
-    function isOwnerOfNft (address user , uint256 id) external view returns(bool) {
-        if (ownerOf(id) == user) {
-            return true;
-        } else return false;
     }
     
     function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize)
