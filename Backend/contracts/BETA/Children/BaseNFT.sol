@@ -14,35 +14,24 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "../libraries/PPlib.sol";
 
 contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
     using SafeMath for uint256;
+    using PPlib for PPlib.UserProfile;
+    using PPlib for PPlib.Value;
 
     Counters.Counter private _tokenIdCounter;
 
-    struct Value{
-        uint256 availableValue;
-        uint256 totalDeposited;
-        uint256 totalWithdrawn;
-    }
-
-    struct UserProfile {
-        string FullName;
-        string UniqueTag;
-        string ProfilePicURI;
-        string gender;
-        address Web3Wallet;
-        bool isBlacklistedUser;
-    }
     address private feeToken;
     uint256 private transferFee;
 
     mapping(address => bool) private isAllowedOperator;
     mapping(address => mapping(uint256 => uint256)) private lockerbalances;
     mapping(uint256 => uint256) private inherentBalances;
-    mapping(address => mapping(uint256 => Value)) private _value;
-    mapping(uint256 => UserProfile) private _user;
+    mapping(address => mapping(uint256 => PPlib.Value)) private _value;
+    mapping(uint256 => PPlib.UserProfile) private _user;
 
 
     constructor(address token , uint256 feeForInherentTransfer) ERC721("Sed-Pepe Profiles", "$PP") {
@@ -55,13 +44,13 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
         return "ipfs://QmUjdfyZm87CkjfGL95rZdeustBv2hGab5iNTXNgLNU4oL";
     }
 
-    function getInherentBal(uint256 id) external view returns(uint256){
-        return inherentBalances[id];
-    }
-
     function setFeeForNftTransfer(uint256 fee) public {
         require(isAllowedOperator[msg.sender] == true);
         transferFee = fee;
+    }
+
+    function getInherentBal(uint256 id) external view returns(uint256){
+        return inherentBalances[id];
     }
 
     function IVTransfer(uint256 id) internal {
@@ -212,6 +201,7 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     function editUniqueTag(string memory tag , uint256 id )external{
         require(isAllowedOperator[msg.sender] == true);
         require(id < _tokenIdCounter.current(),"ID Does Not Exist");
+        require(isUniqueTagUnique(tag)== true , "Unique tag already taken");
         _user[id].UniqueTag = tag; 
     }
     
@@ -256,6 +246,15 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
         override(ERC721, ERC721Enumerable)
     {
         super._beforeTokenTransfer(from, to, tokenId, batchSize);
+    }
+
+    function isUniqueTagUnique(string memory tag) public view returns (bool) {
+    for (uint256 i = 0; i < _tokenIdCounter.current(); i++) {
+        if (keccak256(bytes(_user[i].UniqueTag)) == keccak256(bytes(tag))) {
+            return false;
+        }
+    }
+    return true;
     }
 
     function burn(uint256 TokenId) public override(ERC721Burnable) {
