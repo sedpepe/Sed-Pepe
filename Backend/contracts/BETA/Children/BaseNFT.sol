@@ -40,7 +40,7 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     }
 
     function baseURI() external pure returns (string memory) {
-        return "ipfs://QmUjdfyZm87CkjfGL95rZdeustBv2hGab5iNTXNgLNU4oL";
+        return "QmUjdfyZm87CkjfGL95rZdeustBv2hGab5iNTXNgLNU4oL";
     }
 
     function setFeeForNftTransfer(uint256 fee) public {
@@ -65,14 +65,14 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
         _user[tokenId].Web3Wallet = msg.sender;
     }
 
-    function addCollateral(uint256 id , uint256 amount ) external nonReentrant {
+    function _addCollateral(uint256 id , uint256 amount ) external nonReentrant {
         require(isAllowedOperator[msg.sender] == true); 
         require(id < _tokenIdCounter.current(),"ID Does Not Exist");
         _value[feeToken][id].availableValue = _value[feeToken][id].availableValue.add(amount);
         _value[feeToken][id].totalDeposited = _value[feeToken][id].totalDeposited.add(amount);
     }
     
-    function withdrawCollateral(uint256 id, uint256 amount) external {
+    function _withdrawCollateral(uint256 id, uint256 amount) external {
         require(isAllowedOperator[msg.sender] == true);
         require(id < _tokenIdCounter.current(),"ID Does Not Exist");
         uint256 amountCollateral = _value[feeToken][id].availableValue;
@@ -163,7 +163,9 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
         require(isAllowedOperator[msg.sender] == true);
         require( _value[feeToken][fromId].availableValue >= amount);
         _value[feeToken][fromId].availableValue = _value[feeToken][fromId].availableValue.sub(amount);
-        _value[feeToken][toId].totalWithdrawn = _value[feeToken][toId].totalWithdrawn.add(amount);
+        _value[feeToken][fromId].totalWithdrawn = _value[feeToken][fromId].totalWithdrawn.add(amount);
+        _value[feeToken][toId].availableValue = _value[feeToken][toId].availableValue.add(amount);
+        _value[feeToken][toId].totalDeposited = _value[feeToken][toId].totalDeposited.add(amount);
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public override(ERC721 , IERC721) {
