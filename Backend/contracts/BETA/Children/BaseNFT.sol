@@ -2,8 +2,6 @@
 
 //Add checks for ID Owner on all necessary functions on Inherited Contracts
 
-//Add Checks in Edit Unique Tag function to check if a function is unique
-
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
