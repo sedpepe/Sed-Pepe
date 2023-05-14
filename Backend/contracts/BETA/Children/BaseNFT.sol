@@ -93,11 +93,12 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
         require(isAllowedOperator[msg.sender] == true);
         require(id < _tokenIdCounter.current(),"ID Does Not Exist");
         uint256 amountCollateral = _value[feeToken][id].availableValue;
-        require(amountCollateral >= amt ,"No Collateral to Withdraw");
+        require(amt <= amountCollateral ,"No Collateral to Withdraw");
         uint256 amount = amt.mul(99).div(100);
-        uint256 dist = amt - amount;
-        _value[feeToken][id].availableValue = _value[feeToken][id].availableValue.sub(amount);
-        _value[feeToken][id].totalWithdrawn = _value[feeToken][id].totalWithdrawn.add(amount);
+        uint256 dist = (amt - amount).div(2);
+        _value[feeToken][id].availableValue = _value[feeToken][id].availableValue.sub(amt);
+        _value[feeToken][id].totalWithdrawn = _value[feeToken][id].totalWithdrawn.add(amt); 
+        inherentBalances[id] = inherentBalances[id].add(dist);
         divideAndAddAmount(dist);
     }
     
@@ -124,12 +125,15 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     
     function divideAndAddAmount(uint256 _amount) internal {
         uint256 totalSupply = _tokenIdCounter.current();
+        uint256 totalBalance = 10000000000 * (10**18);
+        // Distribute the amount proportionally based on token balances
         for (uint256 i = 0; i < totalSupply; i++) {
             uint256 tokenId = i;
-            uint256 inherent = getInherentBal(tokenId);
-            uint256 balance = _value[feeToken][tokenId].availableValue + inherent;
-            if (balance > 0) {
-                uint256 dividedAmount = _amount.div(balance);
+            uint256 balance = _value[feeToken][tokenId].availableValue;
+
+            if (balance > 500000000000000000) {
+                uint256 inherit = getInherentBal(tokenId);
+                uint256 dividedAmount = _amount.mul(balance + inherit).div(totalBalance);
                 _value[feeToken][tokenId].availableValue = balance.add(dividedAmount);
             }
         }
@@ -211,7 +215,6 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public override(ERC721 , IERC721) {
-        require(isAllowedOperator[msg.sender] == true);
         require(IERC20(feeToken).balanceOf(from) >= transferFee ,"Fee Token Balance Not Sufficient");
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
@@ -220,7 +223,6 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     }
     
     function safeTransferFrom(address from, address to, uint256 tokenId) public override(ERC721 , IERC721) {
-        require(isAllowedOperator[msg.sender] == true);
         require(IERC20(feeToken).balanceOf(from) >= transferFee ,"Fee Token Balance Not Sufficient");
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
@@ -229,7 +231,6 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     }
 
     function transferFrom(address from, address to, uint256 tokenId) public override(ERC721 , IERC721) {
-        require(isAllowedOperator[msg.sender] == true);
         require(IERC20(feeToken).balanceOf(from) >= transferFee ,"Fee Token Balance Not Sufficient");
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
