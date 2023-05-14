@@ -10,11 +10,12 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "../libraries/PPlib.sol";
+import "./libraries/PPlib.sol";
 
 contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
@@ -45,7 +46,7 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     }
 
     function setFeeForNftTransfer(uint256 fee) public {
-        require(isAllowedOperator[msg.sender] == true);
+        require(isAllowedOperator[msg.sender] == true || msg.sender == owner());
         transferFee = fee;
     }
 
@@ -162,12 +163,14 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
 
     function transferCollateral(uint256 fromId , uint256 toId , uint256 amount) public {
         require(isAllowedOperator[msg.sender] == true);
+        require( _value[feeToken][fromId].availableValue >= amount);
         _value[feeToken][fromId].availableValue = _value[feeToken][fromId].availableValue.sub(amount);
         _value[feeToken][toId].totalWithdrawn = _value[feeToken][toId].totalWithdrawn.add(amount);
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public override(ERC721 , IERC721) {
         require(isAllowedOperator[msg.sender] == true);
+        require(IERC20(feeToken).balanceOf(from) >= transferFee ,"Fee Token Balance Not Sufficient");
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
         super.safeTransferFrom(from, to, tokenId, _data);
@@ -176,6 +179,7 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
     
     function safeTransferFrom(address from, address to, uint256 tokenId) public override(ERC721 , IERC721) {
         require(isAllowedOperator[msg.sender] == true);
+        require(IERC20(feeToken).balanceOf(from) >= transferFee ,"Fee Token Balance Not Sufficient");
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
         super.safeTransferFrom(from, to, tokenId);
@@ -184,6 +188,7 @@ contract PepeProfileNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Bur
 
     function transferFrom(address from, address to, uint256 tokenId) public override(ERC721 , IERC721) {
         require(isAllowedOperator[msg.sender] == true);
+        require(IERC20(feeToken).balanceOf(from) >= transferFee ,"Fee Token Balance Not Sufficient");
         delete _user[tokenId];
         _user[tokenId].Web3Wallet = to;
         super.transferFrom(from, to, tokenId);
