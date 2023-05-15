@@ -39,13 +39,13 @@ library PPlib {
         string reactions;
         uint256 likes;
     }
-    //mapping tokenId => (tokenId => Struct Friend)
+    //mapping tokenId => (tokenId => Struct Friend) for dms and stories
     struct Friend{
         bool isFriendOftokenId;
         uint256 timestampofAdd;
         uint256 timestampOfRemove; 
     }
-    //mapping tokenId => (tokenId => Struct Friend)
+    //mapping tokenId => (tokenId => Struct Follower) for public blog posts
     struct Follower{
         bool isFollowedToId;
         uint256 timestampofAdd;
