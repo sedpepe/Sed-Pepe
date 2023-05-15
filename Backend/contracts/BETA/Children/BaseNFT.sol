@@ -14,7 +14,7 @@ PEPE PROFILES : An ERC-721 NFT that act as profiles for the Sed Pepe Blog Platfo
                 is to be used through inheriting contracts that can use it for other purposes too. 
 
 
-                MOST OF THE FUNCTIONS IN THIS CONTRACT ARE SUPPOSED TO BE USED AND CONFIGURED THROUGH INHERITING CONTRACTS
+                MOST OF THE FUNCTIONS IN THIS CONTRACT ARE SUPPOSED TO BE Called AND CONFIGURED THROUGH INHERITING CONTRACTS
  */
 /*
 Imp : ADD CHECKS FOR ownerOf(id) for necessary functions on the inheriting contract
