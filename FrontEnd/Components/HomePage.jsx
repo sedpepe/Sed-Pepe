@@ -18,7 +18,7 @@ const HomePage = () => {
        
        <div className='flex justify-center pb-2 md:pt-8 lg:pt-10'> {/* HEAD INTRO*/}
         <div className='title flex pt-4 flex-col justify-center w-10/12 md:w-5/12 lg:w-3/12 text-center gap-2'>
-          <h1 className='text-5xl justify-center flex bg-[#247224] border drop-shadow-xl p-2 rounded-full'>$SED PEPE</h1>
+          <h1 className='text-5xl justify-center flex bg-[#247224] border drop-shadow-xl p-2 rounded-full font-bold'>$SED PEPE</h1>
           <div className='flex justify-center opacity-100 pt-6'>
             <Image src="/SPEPENFTs.gif" height={300} width={300} alt="Sad" className='absolute rounded-2xl border border-black drop-shadow-xl'/>
           </div>
