@@ -26,7 +26,12 @@ const NavBarComponent = () => {
         <div className="fixed inset-0 bg-[#187818] flex justify-center items-center z-40">
           <div className='flex flex-col items-center gap-20 font-semibold italic'>
             <h1 className='text-5xl underline-offset-4 underline text-gray-300'>CONTENTS</h1>
-            <button className='bg-red-600 rounded-full w-24 h-24 text-blue-300' onClick={()=> setOpenMenu(false)}>Close</button>
+              <Link href ={'./'}><div className='flex rounded-xl p-1 hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>HOME</div></Link>
+              <Link href ={'./docs'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>DOCS</div></Link>
+              <Link href ={'./roadmap'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>ROADMAP</div></Link>
+              <Link href ={'./presale'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>PRESALE</div></Link>
+              <Link href ={'./support'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>SUPPORT</div></Link>
+            <button className='bg-red-600 rounded-full w-24 h-12 text-blue-300' onClick={()=> setOpenMenu(false)}>Close</button>
           </div>
         </div>
       )}
