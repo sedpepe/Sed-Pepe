@@ -8,48 +8,38 @@ import Link from 'next/link';
 const HomePage = () => {
     const {connectedUser ,MintNFT } =useContext(AppContext);
   return (
-    <div className=' bg-[#2b892b] text-black w-screen h-screen font-a'>
-      <div className='flex justify-start absolute inset-y-22 w-screen h-screen inset-x-0 ' style={{ opacity: 0.18 }}>
-      <Image src="/sadd.gif" layout="fill" objectFit="cover" alt="Sed Pepe" priority={true}/>
+    <div className=' bg-[#2b892b] w-screen min-h-screen font-a text-white'>
+      <div className='flex justify-start absolute inset-y-22 w-screen min-h-screen inset-x-0 ' style={{ opacity: 0.18 }}>
+      <Image src="/sadd.gif" layout="fill" objectFit='cover' alt="Sed Pepe" priority={true}/>
       </div>
 
-      <div className="relative z-10 pt-8 flex flex-col items-center justify-center">
-        <div className=' gap-4 flex flex-col'>
-        <h1 className='font-semibold text-5xl text-center text-white cursor-pointer'>SED PEPE</h1>
-        
-        <div className='flex items-center pb-1 md:pt-8 pt-2 cursor-pointer justify-center'>  
+      <div className='main'>
        
-          <Image src='/lgo.png' height={300} width={300} alt="Sed Pepe"/>
+       <div className='flex justify-center pb-2'> {/* HEAD INTRO*/}
+        <div className='title flex pt-4 flex-col justify-center w-10/12 text-center gap-2'>
+          <h1 className='text-5xl justify-center flex bg-[#247224] border drop-shadow-xl p-2 rounded-full'>$SED PEPE</h1>
+          <div className='flex justify-center opacity-100 pt-6'>
+            <Image src="/SPEPENFTs.gif" height={300} width={300} alt="Sad" className='absolute rounded-2xl border border-black drop-shadow-xl'/>
+          </div>
+          <p className=' text-2xl justify-center flex pt-80'> The King Of All Memes is SED!!</p>
+        </div>
+        </div>
         
-        </div>
-        
-        <div className='w-11/12 flex flex-col justify-center text-center items-center md:w-[60rem]'>
-          <div className='w-11/12 flex flex-col text-center items-center pt-2 md:pt-8'>
-        <p className=' font-medium text-lg text-center text-white pl-6 md:pb-8'> 
-        Pepe has become Sad of all the Atrocities of Humanity and Pepe is on the Brink of Devastation. Pepe is 
-        very fed up of the World and its ways and is here to change that ! He wants the War to stop ASAP and will help in 
-        all possible ways to bring Peace to the world in whatever small way possible.
-        </p>
-        </div>
-        </div>
-        </div>
-
-        <div className=' w-11/12 flex justify-center pt-2 md:pt-12 md:w-screen '>
-          <div className='bg-[#268426] w-11/12 md:w-[80rem] h-[25.5rem] md:h[22rem] flex flex-col rounded-2xl border-2 drop-shadow-lg text-center pt-2'>
-            <h3 className="font-a text-white text-2xl underline pb-1 md:pt-8 md:pb-4">About</h3>
-            <div className='flex justify-center p-2'>
-              <p className='font-a text-white text-lg w-[55rem] pb-4 md:pt-8'>
-              Sed Pepe $SPEPE is a Meme Coin Project on Ethereum L2 Solution
-              Arbitrum. He has now come in the form of a Deflationary ERC-20 Token with a 4% tax on Buy/Sell that donates 
-              a Percentage of each Buy & Sell for Humanitarian Causes. He also Boasts a Strong Deflationary Mechanism That Burns
-              1.5% of each Buy/Sell of $SPEPE. Not Only have he come with a Noble Cause but also with UTILITY unlike other PEPE Versions, 
-              $SPEPE will feature a Full Ecosystem down the line that is revolved Around the token including but not limited to De-Fi , NFTs 
-              ,NFT-Fi and Many More!   
-              </p>
+        <div className='flex p-6 w-screen justify-center'>
+          <div className=' bg-[#247224] border drop-shadow-lg w-11/12 flex text-center justify-center flex-col items-center pt-4 pb-4 pl-2 pr-2'>
+          <h1 className='text-2xl pb-4'>ABOUT SED PEPE</h1>
           
-            </div>
+          <p>Sed Pepe is an ERC20 Meme Coin that Has Actual Utility and A fully Decentralized Ecosystem Built Around it. Pepe Thinks It is Very Sed to Not have Utility
+             as a Community Owned Asset, So he Came this time with a Open-To-All Fully Decentralised Platform for Pepe Fans to Post about their Day!! Not Only this Pepe 
+             has A loads of Things in Store for His fans that he will give out to most loyal of his Fans.
+          </p>
+          <p className='pt-1'>Pepe Is Looks forward for Your Support!!</p>
           </div>
         </div>
+
+        <></>
+
+        <></>
 
       </div>
     </div>

@@ -7,37 +7,24 @@ import Image from 'next/image';
 
 const NavBarComponent = () => {
     const {connectedUser} =useContext(AppContext);
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 900); // Set breakpoint for mobile screens
-      };
-
-      // Add event listener to handle window resize
-      window.addEventListener('resize', handleResize);
-
-      // Cleanup the event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
 
   return (
-    <div className='flex flex-row justify-start bg-[#2cb52c] items-center h-20 w-screen pl-2 pr-2 md:pl-16 md:justify-between '>
+    <div className='flex flex-row justify-start bg-[#2cb52c] items-center h-16 w-screen pl-4 pr-2 md:pl-16 md:justify-between gap-4 border-[#2b892b] border-2 '>
         <Link href={"./"}>
-        <div className='flex w-1/3 rounded-2xl justify-start pt-2 pb-2 items-center cursor-pointer gap-2 md:w-80'>
-          <Image src="/lgo.png" width={60} height={60} alt="Sed Pepe Logo"/>
-          <h4 className=' text-m font-a text-white font-semibold md:text-3xl'> $SPEPE</h4>
+        <div className='flex w-1/3 rounded-2xl justify-start pt-2 pb-2 items-center cursor-pointer gap-1 md:w-80'>
+          <div className='absolute w-8 h-8'>
+            <Image src="/lgo.png"  layout="fill" objectFit="cover" alt="Sed Pepe Logo"/>
+          </div>
+          <h4 className=' text-sm font-a text-white font-semibold md:text-3xl pl-10 underline underline-offset-1'> $SPEPE</h4>
         </div>
         </Link>
 
-      <div className='flex flex-row w-2/3 items-center text-center justify-start gap-1 text-white text-sm md:text-xl font-bold font-a md:w-4/6 md:gap-4'>
-        <Link href ={'./'}><div className='flex rounded-xl p-2 hover:text-red-500 cursor-pointer hover:scale-110'>HOME</div></Link>
-        <Link href ={'./litepaper'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>LITEPAPER</div></Link>
-        <Link href ={'./'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>ROADMAP</div></Link>
-        <Link href ={'./mint-id'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>MINT IDs</div></Link>
-        <Link href ={'./buypepe'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>BUY $SPEPE</div></Link>
+      <div className='flex flex-row w-2/3 items-center text-center justify-start text-white text-xs md:text-xl font-bold font-a md:w-4/6 md:gap-4'>
+        <Link href ={'./'}><div className='flex rounded-xl p-1 hover:text-red-500 cursor-pointer hover:scale-110'>HOME</div></Link>
+        <Link href ={'./docs'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>DOCS</div></Link>
+        <Link href ={'./roadmap'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>ROADMAP</div></Link>
+        <Link href ={'./presale'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>PRESALE</div></Link>
+        <Link href ={'./support'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110'>SUPPORT</div></Link>
       </div>
       
     </div>
