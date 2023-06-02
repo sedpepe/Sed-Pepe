@@ -11,7 +11,7 @@ const HomePage = () => {
     <div className=' bg-[#2b892b] min-w-screen min-h-screen font-a text-white'>
       
       <div className='flex justify-start absolute inset-y-22 w-screen min-h-screen inset-x-0 ' style={{ opacity: 0.18 }}>
-      <Image src="/sadd.gif" layout="fill" objectFit='cover' alt="Sed Pepe" priority={true}/>
+      <Image src="/newGifs/sedPep.gif" layout="fill" objectFit='cover' alt="Sed Pepe" priority={true}/>
       </div>
 
       <div className='main'>

@@ -8,16 +8,18 @@ const NavBarComponent = () => {
     const {connectedUser} =useContext(AppContext);
     const [openMenu , setOpenMenu] = useState(false);
   return (
-    <div className='flex flex-row justify-between bg-[#2cb52c] items-center h-16 min-w-screen pl-4 pr-2 md:pl-6 md:justify-between gap-4 border-[#2b892b] border-2 '>
-        <div className=' flex min-w-1/2 rounded-2xl justify-start pt-2 pb-2 items-center cursor-pointer gap-7 text-2xl font-bold'>
-          
-            <Image src="/lgo.png"  height={47} width={47} alt="Sed Pepe Logo"/>
-
-            <p className='text-white'>SEDPEPE</p>
+    <div className='flex flex-row justify-evenly bg-[#2cb52c] items-center h-18 min-w-screen md:justify-evenly gap-4 border-[#2b892b] border-2 '>
+        <div className=' flex justify-between pt-2 pb-2 items-center cursor-pointer gap-7 text-2xl font-bold'>
+          <Link href={'./'}>
+            <Image src="/pepe-drama-cry.gif"  height={58} width={58} alt="Sed Pepe Logo" className='rounded-full border border-black '/>
+          </Link>
         </div>
         
+        <div>
+        <p className='text-white text-2xl md:text-3xl font-bold'>SEDPEPE</p>
+        </div>
 
-      <div className='flex  flex-row w-2/3 items-center justify-end pr-1 text-center text-white text-xs md:text-xl font-bold font-a md:w-4/6 md:gap-4'>
+      <div className='flex  flex-row items-center justify-end pr-1 text-center text-white text-xs md:text-xl font-bold font-a md:gap-4'>
         <button onClick={()=> setOpenMenu(true)}><Image src="/menuicon.svg" width={40} height={40}/></button>
       </div>
       
