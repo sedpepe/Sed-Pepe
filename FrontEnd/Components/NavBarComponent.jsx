@@ -8,10 +8,10 @@ const NavBarComponent = () => {
     const {connectedUser} =useContext(AppContext);
     const [openMenu , setOpenMenu] = useState(false);
   return (
-    <div className='flex flex-row justify-evenly bg-[#2cb52c] items-center h-18 min-w-screen md:justify-evenly gap-4 border-[#2b892b] border-2 '>
-        <div className=' flex justify-between pt-2 pb-2 items-center cursor-pointer gap-7 text-2xl font-bold'>
+    <div className='flex flex-row justify-around md:justify-between md:pl-12 md:pr-12 bg-[#2cb52c] items-center h-18 min-w-screen gap-4 border-[#2b892b] border-2 '>
+        <div className=' flex justify-between pt-2 pb-2 items-center cursor-pointer gap-7 text-2xl font-bold h-full'>
           <Link href={'./'}>
-            <Image src="/pepe-drama-cry.gif"  height={58} width={58} alt="Sed Pepe Logo" className='rounded-full border border-black '/>
+            <Image src="/pepe-drama-cry.gif"  height={55} width={55} alt="Sed Pepe Logo" className='rounded-full border border-black '/>
           </Link>
         </div>
         
@@ -20,7 +20,7 @@ const NavBarComponent = () => {
         </div>
 
       <div className='flex  flex-row items-center justify-end pr-1 text-center text-white text-xs md:text-xl font-bold font-a md:gap-4'>
-        <button onClick={()=> setOpenMenu(true)}><Image src="/menuicon.svg" width={40} height={40}/></button>
+        <button onClick={()=> setOpenMenu(true)}><Image src="/menuicon.svg" width={55} height={50}/></button>
       </div>
       
 
