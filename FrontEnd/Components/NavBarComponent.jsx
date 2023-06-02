@@ -16,7 +16,7 @@ const NavBarComponent = () => {
         </div>
         
         <div>
-        <p className='text-white text-2xl md:text-3xl font-bold'>SEDPEPE</p>
+        <p className='text-white text-3xl md:text-4xl font-bold font-Cool'>SEDPEPE</p>
         </div>
 
       <div className='flex  flex-row items-center justify-end pr-1 text-center text-white text-xs md:text-xl font-bold font-a md:gap-4'>
@@ -26,7 +26,7 @@ const NavBarComponent = () => {
 
       {openMenu && (
         <div className="fixed inset-0 bg-[#187818] flex justify-center items-center z-40">
-          <div className='flex flex-col items-center gap-20 font-semibold italic'>
+          <div className='flex flex-col items-center gap-8 font-semibold italic'>
             <h1 className='text-5xl underline-offset-4 underline text-gray-300'>CONTENTS</h1>
               <Link href ={'./'}><div className='flex rounded-xl p-1 hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>HOME</div></Link>
               <Link href ={'./docs'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>DOCS</div></Link>

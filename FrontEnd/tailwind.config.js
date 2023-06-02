@@ -12,6 +12,7 @@ module.exports = {
     extend: {},
     fontFamily:{
       a: ["Exo 2", "sans-serif"],
+      Cool:["Righteous","cursive"],
     }
   },
   plugins: [],
