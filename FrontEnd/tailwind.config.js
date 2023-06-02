@@ -13,6 +13,7 @@ module.exports = {
     fontFamily:{
       a: ["Exo 2", "sans-serif"],
       Cool:["Righteous","cursive"],
+      Monoton:["Monoton","cursive"],
     }
   },
   plugins: [],

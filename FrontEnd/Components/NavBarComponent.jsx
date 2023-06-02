@@ -16,7 +16,7 @@ const NavBarComponent = () => {
         </div>
         
         <div>
-        <p className='text-white text-3xl md:text-4xl font-bold font-Cool'>SEDPEPE</p>
+        <p className='text-white text-3xl md:text-4xl font-bold font-Monoton'>SEDPEPE</p>
         </div>
 
       <div className='flex  flex-row items-center justify-end pr-1 text-center text-white text-xs md:text-xl font-bold font-a md:gap-4'>
