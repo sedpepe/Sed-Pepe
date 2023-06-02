@@ -4,7 +4,6 @@ import HomePage from "../Components/HomePage";
 import LoginPage from "../Components/LoginPage";
 import { useRouter } from "next/router";
 import { useAddress } from "@thirdweb-dev/react";
-import MINTPage from "../Components/nftMint";
 import Whitepaper from "../Components/Whitepaper";
 
 export default function Home() {

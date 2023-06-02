@@ -16,7 +16,7 @@ const NavBarComponent = () => {
         </div>
         
         <div>
-        <p className='text-white text-3xl md:text-4xl font-bold font-titleFont'>SEDPEPE</p>
+        <p className='text-white text-[2.5rem] md:text-[3rem] font-Abril'>SEDPEPE</p>
         </div>
 
       <div className='flex  flex-row items-center justify-end pr-1 text-center text-white text-xs md:text-xl font-bold font-a md:gap-4'>
@@ -25,15 +25,26 @@ const NavBarComponent = () => {
       
 
       {openMenu && (
-        <div className="fixed inset-0 bg-[#187818] flex justify-center items-center z-40">
-          <div className='flex flex-col items-center gap-8 font-semibold italic'>
+        <div className="fixed inset-0 bg-[#187818] flex items-center z-40 flex-col justify-evenly pt-[4rem]">
+          <div className='flex justify-start absolute inset-y-22 w-screen min-h-screen inset-x-0 ' style={{ opacity: 0.18 }}>
+            <Image src="/newGifs/sadpepe-sad.gif" layout="fill" objectFit='cover' alt="Sed Pepe" priority={true}/>
+          </div>
+
+          <div className='flex flex-col items-center gap-[5rem] font-semibold italic border rounded-2xl border-green-800 w-11/12 pt-[3rem] pb-[3rem] z-50'>
+          <div className=''>
             <h1 className='text-5xl underline-offset-4 underline text-gray-300'>CONTENTS</h1>
-              <Link href ={'./'}><div className='flex rounded-xl p-1 hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>HOME</div></Link>
-              <Link href ={'./docs'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>DOCS</div></Link>
-              <Link href ={'./roadmap'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>ROADMAP</div></Link>
-              <Link href ={'./presale'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>PRESALE</div></Link>
-              <Link href ={'./support'}><div className='flex rounded-xl p-1  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>SUPPORT</div></Link>
-            <button className='bg-red-600 rounded-full w-24 h-12 text-blue-300' onClick={()=> setOpenMenu(false)}>Close</button>
+          </div>
+          
+          <div className='flex flex-col items-center text-white gap-8 font-semibold italic bg-[#247224] rounded-2xl w-10/12 border border-black pt-8 pb-8'>
+            <Link href ={'./'}><div className='flex rounded-xl hover:underline  p-1 hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>HOME</div></Link>
+            <Link href ={'./docs'}><div className='flex rounded-xl p-1 hover:underline   hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>DOCS</div></Link>
+            <Link href ={'./roadmap'}><div className='flex rounded-xl p-1 hover:underline   hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>ROADMAP</div></Link>
+            <Link href ={'./lotto'}><div className='flex rounded-xl p-1 hover:underline  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>LOTTERY</div></Link>
+            <Link href ={'./presale'}><div className='flex rounded-xl p-1 hover:underline   hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>PRESALE</div></Link>
+            <Link href ={'./support'}><div className='flex rounded-xl p-1 hover:underline  hover:text-red-500 cursor-pointer hover:scale-110' onClick={()=>setOpenMenu(false)}>SUPPORT</div></Link>
+          </div>
+
+          <button className='bg-red-600 rounded-3xl w-16 h-24 gap-2 border text-blue-300 flex flex-col items-center justify-center' onClick={()=> setOpenMenu(false)}><Image src='/newGifs/runningPepe.gif' width={35} height={10}/>X</button>
           </div>
         </div>
       )}

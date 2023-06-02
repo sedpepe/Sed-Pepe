@@ -10,6 +10,7 @@ const Whitepaper = () => {
 
       <div className='relative z-10 items-center text-center flex flex-col justify-center gap-8 cursor-pointer w-screen'>
         <Image src={'/sorry.gif'} height={800} width={800} alt="dancing pepe"/>
+        <h1 className=' text-6xl font-Monoton text-white'>COMING SOON !</h1>
       </div>
 
     </div>

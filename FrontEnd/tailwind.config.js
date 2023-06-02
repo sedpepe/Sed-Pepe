@@ -11,10 +11,12 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily:{
-      a: ["Exo 2", "sans-serif"],
-      Cool:["Righteous","cursive"],
-      Monoton:["Monoton","cursive"],
-      titleFont:["Saira", "sans-serif"],
+      'a': ["Exo 2", "sans-serif"],
+      'Cool':["Righteous","cursive"],
+      'Monoton':["Monoton","cursive"],
+      'Abril':["Abril Fatface","cursive"],
+      'titleFont':["Saira", "sans-serif"],
+      'Teku':["Teko","sans-serif"],
     }
   },
   plugins: [],
