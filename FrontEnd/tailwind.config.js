@@ -17,6 +17,7 @@ module.exports = {
       'Abril':["Abril Fatface","cursive"],
       'titleFont':["Saira", "sans-serif"],
       'Teku':["Teko","sans-serif"],
+      'Production-1' :["Indie Flower","cursive"],
     }
   },
   plugins: [],
